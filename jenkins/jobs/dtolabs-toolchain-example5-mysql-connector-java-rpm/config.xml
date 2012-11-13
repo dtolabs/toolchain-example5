@@ -49,12 +49,12 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>rerun rpm:build -n mysql-connector-java -v 5.1.22 -r $BUILD_NUMBER -t src/mysql-connector-java-rpm</command>
+      <command>rerun rpm:build -n mysql-connector-java -v 5.1.22 -r $BUILD_NUMBER -t mysql-connector-java-rpm</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
-      <artifacts>src/mysql-connector-java-rpm/RPMS/noarch/mysql-connector-java-5.1.22-$BUILD_NUMBER.noarch.rpm</artifacts>
+      <artifacts>mysql-connector-java-rpm/RPMS/noarch/mysql-connector-java-5.1.22-$BUILD_NUMBER.noarch.rpm</artifacts>
       <latestOnly>false</latestOnly>
     </hudson.tasks.ArtifactArchiver>
   </publishers>

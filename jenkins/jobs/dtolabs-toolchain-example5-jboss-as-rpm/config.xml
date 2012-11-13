@@ -49,12 +49,12 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>rerun jboss-as:build -v 7.1.1.Final -r $BUILD_NUMBER -d src/jboss-as-rpm</command>
+      <command>rerun jboss-as:build -v 7.1.1.Final -r $BUILD_NUMBER -d jboss-as-rpm</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
-      <artifacts>src/jboss-as-rpm/RPMS/noarch/jboss-as-7.1.1.Final-$BUILD_NUMBER.noarch.rpm</artifacts>
+      <artifacts>jboss-as-rpm/RPMS/noarch/jboss-as-7.1.1.Final-$BUILD_NUMBER.noarch.rpm</artifacts>
       <latestOnly>false</latestOnly>
     </hudson.tasks.ArtifactArchiver>
   </publishers>
