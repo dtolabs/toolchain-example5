@@ -49,12 +49,12 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>rerun rpm:build -n booking-mysql-data -v 1.0 -r $BUILD_NUMBER -t data/mysql</command>
+      <command>rerun rpm:build -n booking-mysql-data -v 1.0 -r $BUILD_NUMBER -t booking-mysql-data-rpm</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
-      <artifacts>data/mysql/RPMS/noarch/booking-mysql-data-1.0-$BUILD_NUMBER.noarch.rpm</artifacts>
+      <artifacts>booking-mysql-data-rpm/RPMS/noarch/booking-mysql-data-1.0-$BUILD_NUMBER.noarch.rpm</artifacts>
       <latestOnly>false</latestOnly>
     </hudson.tasks.ArtifactArchiver>
   </publishers>
