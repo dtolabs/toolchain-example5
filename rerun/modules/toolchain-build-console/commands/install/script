@@ -31,6 +31,15 @@ set -o nounset -o pipefail
 # Your implementation goes here.
 # ------------------------------
 
+TOOLCHAIN_ROOT=$(git rev-parse --show-toplevel)
+
+# Bootstrap required rerun modules:
+
+# Bootstrap required packages:
+sudo yum -q -y update rpm-build
+sudo yum -q -y update java-devel-openjdk
+
+# Bootstrap Jenkins installation:
 rerun jenkins:install
 
 rerun jenkins:install-plugin --plugin-name git
@@ -42,7 +51,7 @@ rerun jenkins:configure-rundeck-plugin
 
 rerun jenkins:start
 
-TOOLCHAIN_ROOT=$(git rev-parse --show-toplevel)
+# Bootstrap Jenkins jobs:
 
 for FILE in $(ls -d $TOOLCHAIN_ROOT/jenkins/jobs/*/config.xml)
 do
