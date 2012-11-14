@@ -28,16 +28,16 @@ Requirements
 ------------
 
 * System requirements:
-** 2GB RAM, 8 GB disk
-** 64-bit CentOS Linux 6.2 or later
-** Internet access (to GitHub and standard Yum repositories)
+    * 2GB RAM, 8 GB disk
+    * 64-bit CentOS Linux 6.2 or later
+    * Internet access (to GitHub and standard Yum repositories)
 
 * User requirements:
-** Non-root user account ...
-** ... with sudo access to run any command as root without a password (e.g. wheel group membership)
+    * Non-root user account ...
+    * ... with sudo access to run any command as root without a password (e.g. wheel group membership)
 
 * Repositories:
-** Configure the [EPEL repository](http://dl.fedoraproject.org/pub/epel/6/x86_64/repoview/epel-release.html). e.g:
+   * Configure the [EPEL repository](http://dl.fedoraproject.org/pub/epel/6/x86_64/repoview/epel-release.html). e.g:
 <pre>
 [anthony@centos63-toolchain-example5 ~]$ sudo rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-7.noarch.rpm
 Retrieving http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-7.noarch.rpm
@@ -45,7 +45,7 @@ warning: /var/tmp/rpm-tmp.4fSCLZ: Header V3 RSA/SHA256 Signature, key ID 0608b89
 Preparing...                ########################################### [100%]
    1:epel-release           ########################################### [100%]
 </pre>
-** Configure the latest version of the [Rerun modules repository](https://github.com/rerun-modules/rerun-modules/downloads). e.g:
+    * Configure the latest version of the [Rerun modules repository](https://github.com/rerun-modules/rerun-modules/downloads). e.g:
 <pre>
 [anthony@centos63-toolchain-example5 ~]$ sudo rpm -Uvh https://github.com/downloads/rerun-modules/rerun-modules/rerun-modules-repo-1.0-3.noarch.rpm
 Retrieving https://github.com/downloads/rerun-modules/rerun-modules/rerun-modules-repo-1.0-3.noarch.rpm
@@ -54,7 +54,7 @@ Preparing...                ########################################### [100%]
 </pre>
 
 * Git setup:
-** Install git:
+    * Install git:
 <pre>
 [anthony@centos63-toolchain-example5 ~]$ sudo yum -y install git
 .
@@ -64,7 +64,7 @@ Complete!
 [anthony@centos63-toolchain-example5 ~]$ git --version
 git version 1.7.1
 </pre>
-** Clone the [Toolchain Example #5](https://github.com/dtolabs/toolchain-example5) repository:
+   * Clone the [Toolchain Example #5](https://github.com/dtolabs/toolchain-example5) repository:
 <pre>
 [anthony@centos63-toolchain-example5 ~]$ mkdir src
 [anthony@centos63-toolchain-example5 ~]$ cd src
