@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+#
+#/ command: toolchain-build-console:remove: "Stop and completely remove the toolchain's build console"
+#
+#/ usage: rerun toolchain-build-console:remove [options]
+#
+#/ rerun env variables: RERUN, RERUN_VERSION, RERUN_MODULES, RERUN_MODULE_DIR
+#/ option variables: 
+
+# Read module function library.
+. $RERUN_MODULE_DIR/lib/functions.sh || { 
+  echo >&2 "Failed loading function library." ; exit 1 ; 
+}
+
+# Error handling
+# ---------------
+# * Trap calls `rerun_die` with standard message.
+# * Exit upon command errors or accessing unset variables.
+#   * See [set](http://ss64.com/bash/set.html)
+trap 'rerun_die "*** command failed: toolchain-build-console:remove. ***"' ERR
+set -o nounset -o pipefail
+
+# Parse the command options.
+[[ -r $RERUN_MODULE_DIR/commands/remove/options.sh ]] && {
+    . $RERUN_MODULE_DIR/commands/remove/options.sh || rerun_die "Failed loading options parser."
+    rerun_options_parse "$@"
+}
+
+
+# ------------------------------
+# Your implementation goes here.
+# ------------------------------
+
+rerun jenkins:remove --clean true
+
+exit $?
+
+# Done
