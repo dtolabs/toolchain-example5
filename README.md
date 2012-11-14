@@ -31,6 +31,27 @@ Requirements
     * 2GB RAM, 8 GB disk
     * 64-bit CentOS Linux 6.2 or later
     * Internet access (to GitHub and standard Yum repositories)
+    * Disable firewall configuration:
+<pre>
+[root@centos63-toolchain-example5 ~]# chkconfig iptables off
+[root@centos63-toolchain-example5 ~]# chkconfig ip6tables off
+[root@centos63-toolchain-example5 ~]# service iptables stop
+iptables: Flushing firewall rules:                         [  OK  ]
+iptables: Setting chains to policy ACCEPT: filter          [  OK  ]
+iptables: Unloading modules:                               [  OK  ]
+^[[root@centos63-toolchain-example5 ~]# service ip6tables stop
+ip6tables: Flushing firewall rules:                        [  OK  ]
+ip6tables: Setting chains to policy ACCEPT: filter         [  OK  ]
+ip6tables: Unloading modules:                              [  OK  ]
+</pre>
+    * Ensure the system's node name is a resovable hostname. e.g.:
+<pre>
+[anthony@centos63-toolchain-example5 ~]$ uname -n 
+centos63-toolchain-example5
+[anthony@centos63-toolchain-example5 ~]$ cat /etc/hosts
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 centos63-toolchain-example5
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+</pre>
 
 * User requirements:
     * Non-root user account ...
