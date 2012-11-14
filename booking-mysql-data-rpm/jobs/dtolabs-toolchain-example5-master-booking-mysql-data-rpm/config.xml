@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
   <actions/>
-  <description>Package the MySQL database scripts for the Booking sample application</description>
+  <description>Package the MySQL database scripts for the Booking sample application from the master branch of the dtolabs/toolchain-example5 GitHub repository</description>
   <keepDependencies>false</keepDependencies>
   <properties/>
   <scm class="hudson.plugins.git.GitSCM">
@@ -49,7 +49,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>rerun rpm:build -n booking-mysql-data -v 1.0 -r $BUILD_NUMBER -t booking-mysql-data-rpm</command>
+      <command>rerun -M . booking-mysql-data-rpm:build -r $BUILD_NUMBER</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
