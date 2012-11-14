@@ -2,7 +2,7 @@
 #
 #/ command: jboss-as-config-rpm:build: "Build the JBoss AS configuration RPM"
 #
-#/ usage: rerun jboss-as-config-rpm:build [ --name <jboss-as-config>] [ --version <7.1.1.Final>] [ --release <1>] 
+#/ usage: rerun jboss-as-config-rpm:build [ --name <jboss-as-config>] [ --version <1.0>] [ --release <1>] 
 #
 #/ rerun env variables: RERUN, RERUN_VERSION, RERUN_MODULES, RERUN_MODULE_DIR
 #/ option variables: NAME VERSION RELEASE

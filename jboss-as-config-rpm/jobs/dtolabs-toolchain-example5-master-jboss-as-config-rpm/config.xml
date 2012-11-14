@@ -50,7 +50,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>rerun jboss-as-config-rpm:build --release $BUILD_NUMBER</command>
+      <command>rerun -M . jboss-as-config-rpm:build --release $BUILD_NUMBER</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
