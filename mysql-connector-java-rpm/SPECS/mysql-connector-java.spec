@@ -36,15 +36,16 @@ Packages the MySQL Connector/J for use with the JBoss Application Server standal
 %install
 # setup the target directory hierarchy:
 rm -rf %{buildroot}
-install -d -m 755 %{buildroot}/usr/share/jboss-as/standalone/deployments
-cp mysql-connector-java-%{version}-bin.jar %{buildroot}/usr/share/jboss-as/standalone/deployments
+install -d -m 755 %{buildroot}/usr/share/jboss-as/modules/com/mysql/main
+cp mysql-connector-java-%{version}-bin.jar %{buildroot}/usr/share/jboss-as/modules/com/mysql/main
+cp $RPM_SOURCE_DIR/module-%{version}.xml %{buildroot}/usr/share/jboss-as/modules/com/mysql/main/module.xml
 
 %clean
 
 %files
 # add the files to the RPM with appropriate permissions:
 %defattr(-,jboss-as,jboss-as)
-/usr/share/jboss-as/standalone/deployments/mysql-connector-java-%{version}-bin.jar
+/usr/share/jboss-as/modules/com/mysql
  
 %changelog
 
