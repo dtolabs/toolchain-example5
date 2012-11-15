@@ -32,18 +32,18 @@ set -o nounset -o pipefail
 # ------------------------------
 
 # Bootstrap required rerun modules:
-sudo yum -q -y install rerun-jenkins
-sudo yum -q -y install rerun-rpm
-sudo yum -q -y install rerun-apache-maven
-sudo yum -q -y install rerun-jboss-as
+sudo yum --quiet -q -y install rerun-jenkins
+sudo yum --quiet -q -y install rerun-rpm
+sudo yum --quiet -q -y install rerun-apache-maven
+sudo yum --quiet -q -y install rerun-jboss-as
 
 # Bootstrap required packages:
-sudo yum -q -y install rpm-build
-sudo yum -q -y install java-devel-openjdk
-sudo yum -q -y install xmlstarlet
+sudo yum --quiet -q -y install rpm-build
+sudo yum --quiet -q -y install java-devel-openjdk
+sudo yum --quiet -q -y install xmlstarlet
 
 # Bootstrap the Maven installation, if necessary:
-if ! rpm -q apache-maven
+if ! rpm --quiet -q apache-maven
 then
   rerun apache-maven-rpm:build
   rerun apache-maven-rpm:upgrade
@@ -51,24 +51,6 @@ fi
 
 # Bootstrap Jenkins installation:
 rerun jenkins:install
-rerun jenkins:start
-
-rerun jenkins:install-plugin --plugin-name git
-rerun jenkins:install-plugin --plugin-name rundeck
-
-rerun jenkins:add-jdk
-rerun jenkins:add-maven
-rerun jenkins:configure-rundeck-plugin
-
-rerun jenkins:restart
-
-# Create the Jenkins jobs:
-
-rerun booking-mysql-data-rpm:create-jobs
-rerun jboss-as-config-rpm:create-jobs
-rerun jboss-as-rpm:create-jobs
-rerun mysql-connector-java-rpm:create-jobs
-rerun seam-examples:create-jobs
 
 exit $?
 

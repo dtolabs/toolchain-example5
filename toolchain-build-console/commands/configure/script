@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+#
+#/ command: toolchain-build-console:configure: "Configure the toolchain's build console"
+#
+#/ usage: rerun toolchain-build-console:configure [options]
+#
+#/ rerun env variables: RERUN, RERUN_VERSION, RERUN_MODULES, RERUN_MODULE_DIR
+#/ option variables: 
+
+# Read module function library.
+. $RERUN_MODULE_DIR/lib/functions.sh || { 
+  echo >&2 "Failed loading function library." ; exit 1 ; 
+}
+
+# Error handling
+# ---------------
+# * Trap calls `rerun_die` with standard message.
+# * Exit upon command errors or accessing unset variables.
+#   * See [set](http://ss64.com/bash/set.html)
+trap 'rerun_die "*** command failed: toolchain-build-console:configure. ***"' ERR
+set -o nounset -o pipefail
+
+# Parse the command options.
+[[ -r $RERUN_MODULE_DIR/commands/configure/options.sh ]] && {
+    . $RERUN_MODULE_DIR/commands/configure/options.sh || rerun_die "Failed loading options parser."
+    rerun_options_parse "$@"
+}
+
+
+# ------------------------------
+# Your implementation goes here.
+# ------------------------------
+
+# Install the plug-ins required by the example builds.
+rerun jenkins:install-plugin --plugin-name git
+rerun jenkins:install-plugin --plugin-name rundeck
+
+# Add the Java and Maven installations used by the example.
+rerun jenkins:add-jdk
+rerun jenkins:add-maven
+
+# Configure the Rundeck/Jenkins plugin.
+rerun jenkins:configure-rundeck-plugin
+
+# Restart Jenkins to enable the configuration.
+rerun jenkins:restart
+
+# Create the Jenkins jobs:
+rerun booking-mysql-data-rpm:create-jobs
+rerun jboss-as-config-rpm:create-jobs
+rerun jboss-as-rpm:create-jobs
+rerun mysql-connector-java-rpm:create-jobs
+rerun seam-examples:create-jobs
+
+exit $?
+
+# Done
