@@ -31,7 +31,7 @@ set -o nounset -o pipefail
 # Your implementation goes here.
 # ------------------------------
 
-rerun jenkins:remove --clean true
+rerun jenkins:remove --cleanup true
 
 exit $?
 
