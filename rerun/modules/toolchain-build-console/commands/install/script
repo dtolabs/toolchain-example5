@@ -37,7 +37,7 @@ TOOLCHAIN_ROOT=$(git rev-parse --show-toplevel)
 sudo yum -q -y install rerun-jenkins
 sudo yum -q -y install rerun-rpm
 sudo yum -q -y install rerun-apache-maven
-sudo yum -q -y install jboss-as
+sudo yum -q -y install rerun-jboss-as
 
 # Bootstrap required packages:
 sudo yum -q -y install rpm-build
