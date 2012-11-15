@@ -12,5 +12,5 @@
 describe "create-jobs"
 
 it_can_create_the_jenkins_jobs() {
-    rerun booking-mysql-data-rpm:create-jobs
+    rerun jboss-as-rpm:create-jobs
 }

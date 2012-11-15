@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
   <actions/>
-  <description>Build the JBoss RPM for the Booking sample application</description>
+  <description>Build the JBoss RPM the master branch of the dtolabs/toolchain-example5 GitHub repository</description>
   <keepDependencies>false</keepDependencies>
   <properties/>
   <scm class="hudson.plugins.git.GitSCM">
@@ -49,7 +49,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>rerun jboss-as:build -v 7.1.1.Final -r $BUILD_NUMBER -d jboss-as-rpm</command>
+      <command>rerun -M . jboss-as-rpm:build --release $BUILD_NUMBER</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
