@@ -34,10 +34,20 @@ set -o nounset -o pipefail
 TOOLCHAIN_ROOT=$(git rev-parse --show-toplevel)
 
 # Bootstrap required rerun modules:
+sudo yum -q -y update rerun-jenkins
+sudo yum -q -y update rerun-rpm
+sudo yum -q -y update rerun-apache-maven
 
 # Bootstrap required packages:
 sudo yum -q -y update rpm-build
 sudo yum -q -y update java-devel-openjdk
+
+# Bootstrap the Maven installation, if necessary:
+if ! rpm -q apache-maven
+then
+  rerun apache-maven:build --version 3.0.4 --directory ${TOOLCHAIN_ROOT}/apache-maven-rpm
+  sudo rpm -Uvh ${TOOLCHAIN_ROOT}/apache-maven-rpm/RPMS/noarch/apache-maven-3.0.4-1.noarch.rpm
+fi
 
 # Bootstrap Jenkins installation:
 rerun jenkins:install
