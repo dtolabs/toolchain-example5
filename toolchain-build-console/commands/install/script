@@ -31,8 +31,6 @@ set -o nounset -o pipefail
 # Your implementation goes here.
 # ------------------------------
 
-TOOLCHAIN_ROOT=$(git rev-parse --show-toplevel)
-
 # Bootstrap required rerun modules:
 sudo yum -q -y install rerun-jenkins
 sudo yum -q -y install rerun-rpm
@@ -47,8 +45,8 @@ sudo yum -q -y install xmlstarlet
 # Bootstrap the Maven installation, if necessary:
 if ! rpm -q apache-maven
 then
-  rerun apache-maven:build --version 3.0.4 --directory ${TOOLCHAIN_ROOT}/apache-maven-rpm
-  sudo rpm -Uvh ${TOOLCHAIN_ROOT}/apache-maven-rpm/RPMS/noarch/apache-maven-3.0.4-1.noarch.rpm
+  rerun apache-maven-rpm:build
+  rerun apache-maven-rpm:upgrade
 fi
 
 # Bootstrap Jenkins installation:
@@ -64,7 +62,7 @@ rerun jenkins:configure-rundeck-plugin
 
 rerun jenkins:restart
 
-# Bootstrap Jenkins jobs:
+# Create the Jenkins jobs:
 
 rerun booking-mysql-data-rpm:create-jobs
 rerun jboss-as-config-rpm:create-jobs

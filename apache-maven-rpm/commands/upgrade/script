@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+#
+#/ command: apache-maven-rpm:upgrade: "Upgrade (or install) the Apache Maven RPM"
+#
+#/ usage: rerun apache-maven-rpm:upgrade [ --version <3.0.4>] [ --release <1>] 
+#
+#/ rerun env variables: RERUN, RERUN_VERSION, RERUN_MODULES, RERUN_MODULE_DIR
+#/ option variables: VERSION RELEASE
+
+# Read module function library.
+. $RERUN_MODULE_DIR/lib/functions.sh || { 
+  echo >&2 "Failed loading function library." ; exit 1 ; 
+}
+
+# Error handling
+# ---------------
+# * Trap calls `rerun_die` with standard message.
+# * Exit upon command errors or accessing unset variables.
+#   * See [set](http://ss64.com/bash/set.html)
+trap 'rerun_die "*** command failed: apache-maven-rpm:upgrade. ***"' ERR
+set -o nounset -o pipefail
+
+# Parse the command options.
+[[ -r $RERUN_MODULE_DIR/commands/upgrade/options.sh ]] && {
+    . $RERUN_MODULE_DIR/commands/upgrade/options.sh || rerun_die "Failed loading options parser."
+    rerun_options_parse "$@"
+}
+
+
+# ------------------------------
+# Your implementation goes here.
+# ------------------------------
+
+rerun rpm:upgrade --package-file $RERUN_MODULE_DIR/RPMS/noarch/apache-maven-${VERSION}-${RELEASE}.noarch.rpm
+
+exit $?
+
+# Done
