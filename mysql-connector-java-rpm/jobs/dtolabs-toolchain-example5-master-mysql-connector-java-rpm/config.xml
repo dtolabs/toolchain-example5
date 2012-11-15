@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
   <actions/>
-  <description>Package the MySQL Connector/J RPM for the Booking sample application</description>
+  <description>Package the MySQL Connector/J RPM from the master branch of the dtolabs/toolchain-example5 GitHub repository</description>
   <keepDependencies>false</keepDependencies>
   <properties/>
   <scm class="hudson.plugins.git.GitSCM">
@@ -49,7 +49,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>rerun rpm:build -n mysql-connector-java -v 5.1.22 -r $BUILD_NUMBER -t mysql-connector-java-rpm</command>
+      <command>rerun -M . mysql-connector-java-rpm:build --release $BUILD_NUMBER</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
