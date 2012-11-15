@@ -66,12 +66,11 @@ rerun jenkins:restart
 
 # Bootstrap Jenkins jobs:
 
-for FILE in $(ls -d $TOOLCHAIN_ROOT/jenkins/jobs/*/config.xml)
-do
-  JOBNAME=$(basename $(dirname $FILE))
-  rerun jenkins:create-job --jobname $JOBNAME --file $FILE
-  rerun jenkins:build-now --jobname $JOBNAME
-done
+rerun booking-mysql-data-rpm:create-jobs
+rerun jboss-as-config-rpm:create-jobs
+rerun jboss-as-rpm:create-jobs
+rerun mysql-connector-java-rpm:create-jobs
+rerun seam-examples:create-jobs
 
 exit $?
 
