@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+#
+#/ command: booking-application-server:install: "Install the Booking Application Server"
+#
+#/ usage: rerun booking-application-server:install  --jboss-as-package-file <http://localhost:8080/job/dtolabs-toolchain-example5-jboss-as-rpm/lastSuccessfulBuild/artifact/jboss-as-rpm/RPMS/noarch/jboss-as-7.1.1.Final-1.noarch.rpm>  --jboss-as-config-package-file <http://localhost:8080/job/dtolabs-toolchain-example5-jboss-as-config-rpm/lastSuccessfulBuild/artifact/jboss-as-config-rpm/RPMS/noarch/jboss-as-config-1.0-1.noarch.rpm>  --mysql-connector-package-file <http://mvn-sdp-0.local:8080/job/dtolabs-toolchain-example5-mysql-connector-java-rpm/lastSuccessfulBuild/artifact/mysql-connector-java-rpm/RPMS/noarch/mysql-connector-java-5.1.22-2.noarch.rpm>  --seam-booking-package-file <http://mvn-sdp-0.local:8080/job/dtolabs-seam-examples-master/ws/booking-rpm/target/rpm/seam-booking-rpm/RPMS/noarch/seam-booking-rpm-3.2.0-1.noarch.rpm>  --jboss-as-package-file <http://localhost:8080/job/dtolabs-toolchain-example5-jboss-as-rpm/lastSuccessfulBuild/artifact/jboss-as-rpm/RPMS/noarch/jboss-as-7.1.1.Final-1.noarch.rpm>  --jboss-as-config-package-file <http://localhost:8080/job/dtolabs-toolchain-example5-jboss-as-config-rpm/lastSuccessfulBuild/artifact/jboss-as-config-rpm/RPMS/noarch/jboss-as-config-1.0-1.noarch.rpm>  --mysql-connector-package-file <http://mvn-sdp-0.local:8080/job/dtolabs-toolchain-example5-mysql-connector-java-rpm/lastSuccessfulBuild/artifact/mysql-connector-java-rpm/RPMS/noarch/mysql-connector-java-5.1.22-2.noarch.rpm>  --seam-booking-package-file <http://mvn-sdp-0.local:8080/job/dtolabs-seam-examples-master/ws/booking-rpm/target/rpm/seam-booking-rpm/RPMS/noarch/seam-booking-rpm-3.2.0-1.noarch.rpm> 
+#
+#/ rerun env variables: RERUN, RERUN_VERSION, RERUN_MODULES, RERUN_MODULE_DIR
+#/ option variables: JBOSS_AS_PACKAGE_FILE JBOSS_AS_CONFIG_PACKAGE_FILE MYSQL_CONNECTOR_PACKAGE_FILE SEAM_BOOKING_PACKAGE_FILE JBOSS_AS_PACKAGE_FILE JBOSS_AS_CONFIG_PACKAGE_FILE MYSQL_CONNECTOR_PACKAGE_FILE SEAM_BOOKING_PACKAGE_FILE
+
+# Read module function library.
+. $RERUN_MODULE_DIR/lib/functions.sh || { 
+  echo >&2 "Failed loading function library." ; exit 1 ; 
+}
+
+# Error handling
+# ---------------
+# * Trap calls `rerun_die` with standard message.
+# * Exit upon command errors or accessing unset variables.
+#   * See [set](http://ss64.com/bash/set.html)
+trap 'rerun_die "*** command failed: booking-application-server:install. ***"' ERR
+set -o nounset -o pipefail
+
+# Parse the command options.
+[[ -r $RERUN_MODULE_DIR/commands/install/options.sh ]] && {
+    . $RERUN_MODULE_DIR/commands/install/options.sh || rerun_die "Failed loading options parser."
+    rerun_options_parse "$@"
+}
+
+
+# ------------------------------
+# Your implementation goes here.
+# ------------------------------
+
+
+
+# Bootstrap required rerun modules:
+sudo yum -q -y install rerun-jboss-as
+sudo yum -q -y install rerun-rpm
+
+# Bootstrap required packages:
+sudo yum -q -y install java-openjdk
+
+# Install the JBoss Application Server
+#"http://localhost:8080/job/dtolabs-toolchain-example5-jboss-as-rpm/lastSuccessfulBuild/artifact/jboss-as-rpm/RPMS/noarch/jboss-as-7.1.1.Final-1.noarch.rpm"
+#"http://localhost:8080/job/dtolabs-toolchain-example5-jboss-as-config-rpm/lastSuccessfulBuild/artifact/jboss-as-config-rpm/RPMS/noarch/jboss-as-config-1.0-1.noarch.rpm"
+#"http://mvn-sdp-0.local:8080/job/dtolabs-toolchain-example5-mysql-connector-java-rpm/lastSuccessfulBuild/artifact/mysql-connector-java-rpm/RPMS/noarch/mysql-connector-java-5.1.22-2.noarch.rpm"
+#"http://mvn-sdp-0.local:8080/job/dtolabs-seam-examples-master/ws/booking-rpm/target/rpm/seam-booking-rpm/RPMS/noarch/seam-booking-rpm-3.2.0-1.noarch.rpm"
+
+rerun rpm:upgrade --package-file "${JBOSS_AS_PACKAGE_FILE}"
+
+rerun rpm:upgrade --package-file "${JBOSS_AS_CONFIG_PACKAGE_FILE}"
+
+rerun rpm:upgrade --package-file "${MYSQL_CONNECTOR_PACKAGE_FILE}"
+
+rerun rpm:upgrade --package-file "${SEAM_BOOKING_PACKAGE_FILE}"
+
+
+exit $?
+
+# Done
+
+
