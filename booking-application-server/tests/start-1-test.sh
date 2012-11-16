@@ -11,11 +11,15 @@
 
 describe "start"
 
+if [ -f "${RERUN_MODULES}/booking-application-server/tests/functions.sh" ]
+then
+   source "${RERUN_MODULES}/booking-application-server/tests/functions.sh"
+fi
 
-# ------------------------------
-# Replace this test. 
-it_fails_without_a_real_test() {
-    exit 1
+it_runs_without_arguments() {
+   testinstall
+   rerun booking-application-server:start
+   rerun booking-application-server:stop
+   rerun booking-application-server: remove
 }
-# ------------------------------
 

@@ -32,7 +32,7 @@ set -o nounset -o pipefail
 # ------------------------------
 
 
-rerun jboss-as: start
+rerun jboss-as:start
 
 exit $?
 

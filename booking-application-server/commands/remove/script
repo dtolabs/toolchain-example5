@@ -32,7 +32,13 @@ set -o nounset -o pipefail
 # ------------------------------
 
 
-rerun jboss-as: remove
+rerun jboss-as:stop
+rerun rpm:erase --package-name seam-booking-rpm
+rerun rpm:erase --package-name mysql-connector-rpm
+rerun rpm:erase --package-name jboss-as-config-rpm
+rerun jboss-as:remove --cleanup true
+
+ #seam-booking-rpm-3.2.0-1.noarch -l
 
 exit $?
 

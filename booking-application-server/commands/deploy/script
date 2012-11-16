@@ -31,10 +31,10 @@ set -o nounset -o pipefail
 # Your implementation goes here.
 # ------------------------------
 
-rerun jboss-as: stop
-rerun jboss-as: install
-rerun jboss-as: configure
-rerun jboss-as: start
+rerun booking-application-server: stop
+rerun booking-application-server: install
+rerun booking-application-server: configure
+rerun booking-application-server: start
 
 exit $?
 

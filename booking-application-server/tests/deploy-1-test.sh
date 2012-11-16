@@ -12,10 +12,7 @@
 describe "deploy"
 
 
-# ------------------------------
-# Replace this test. 
-it_fails_without_a_real_test() {
-    exit 1
+it_runs_without_arguments() {
+   return 0
 }
-# ------------------------------
 
