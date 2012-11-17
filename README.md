@@ -153,19 +153,6 @@ Shutting down Jenkins                                      [  OK  ]
 Starting Jenkins                                           [  OK  ]
 </pre>
 
-* TODO: display an example of non-built console jobs  here
-
-* Run the toolchain build console jobs
-<pre>
-[chuck@mvn-sdp-0 toolchain-example5]$ rerun jenkins: build-now --jobname dtolabs-toolchain-example5-master-mysql-connector-java-rpm
-[chuck@mvn-sdp-0 toolchain-example5]$ rerun jenkins: build-now --jobname dtolabs-toolchain-example5-master-jboss-as-rpm	
-[chuck@mvn-sdp-0 toolchain-example5]$ rerun jenkins: build-now --jobname dtolabs-toolchain-example5-master-jboss-as-config-rpm	
-[chuck@mvn-sdp-0 toolchain-example5]$ rerun jenkins: build-now --jobname dtolabs-toolchain-example5-master-booking-mysql-data-rpm	
-[chuck@mvn-sdp-0 toolchain-example5]$ rerun jenkins: build-now --jobname dtolabs-seam-examples-master	
-</pre>
-
-* TODO: display an example of built console jobs here
-
 * Deploy the toolchain deploy console:
 <pre>
 [chuck@mvn-sdp-0 toolchain-example5]$ rerun -M . toolchain-deploy-console: deploy
