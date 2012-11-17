@@ -67,13 +67,6 @@ warning: /var/tmp/rpm-tmp.4fSCLZ: Header V3 RSA/SHA256 Signature, key ID 0608b89
 Preparing...                ########################################### [100%]
    1:epel-release           ########################################### [100%]
 </pre>
-    * Configure the latest version of the [Rerun modules repository](https://github.com/rerun-modules/rerun-modules/downloads). e.g:
-<pre>
-[anthony@centos63-toolchain-example5 ~]$ sudo rpm -Uvh https://github.com/downloads/rerun-modules/rerun-modules/rerun-modules-repo-1.0-3.noarch.rpm
-Retrieving https://github.com/downloads/rerun-modules/rerun-modules/rerun-modules-repo-1.0-3.noarch.rpm
-Preparing...                ########################################### [100%]
-   1:rerun-modules-repo     ########################################### [100%]
-</pre>
 
 * Git setup:
     * Install git:
@@ -87,34 +80,45 @@ Complete!
 git version 1.7.1
 </pre>
 
-* Install MySQL, Rerun, and dependent Rerun modules
+* Obtain latest version of the rerun-modules repo definition from [Rerun Modules Downloads](https://github.com/rerun-modules/rerun-modules/downloads), obtain the link and execute the following replacing example url shown inline:
 <pre>
-[chuck@sdp-centos-63-64-1 toolchain-example5]$ sudo yum -y install rerun rerun-jenkins rerun-rundeck rpm-build mysql rerun-mysql rerun-jboss-as
+[chuck@sdp-centos-63-64-1 toolchain-example5]$  sudo rpm -Uvh https://github.com/downloads/rerun-modules/rerun-modules/rerun-modules-repo-1.0-21.noarch.rpm
+Retrieving https://github.com/downloads/rerun-modules/rerun-modules/rerun-modules-repo-1.0-21.noarch.rpm
+Preparing...                ########################################### [100%]
+   1:rerun-modules-repo     ########################################### [100%]
+</pre>
+
+* Obtain latest version of Rerun from [Rerun Downloads](https://github.com/rerun/rerun/downloads), obtain the link and execute the following replacing example url shown inline:
+<pre>
+[chuck@mvn-sdp-0 development]$ sudo rpm -Uvh https://github.com/downloads/rerun/rerun/rerun-1.0-109.noarch.rpm
+Retrieving https://github.com/downloads/rerun/rerun/rerun-1.0-109.noarch.rpm
+Preparing...                ########################################### [100%]
+   1:rerun                  ########################################### [100%]
+</pre>
+
+* Install rpm-build, mysql, and dependent Rerun modules
+<pre>
+[chuck@sdp-centos-63-64-1 toolchain-example5]$ sudo yum -y install rpm-build mysql  rerun-mysql rerun-jenkins rerun-rundeck rerun-jboss-as
 .
 .
 .
 Transaction Test Succeeded
 Running Transaction
 Warning: RPMDB altered outside of yum.
-  Updating   : mysql-libs-5.1.66-1.el6_3.x86_64                                                                                                                                                 1/3 
-  Installing : mysql-5.1.66-1.el6_3.x86_64                                                                                                                                                      2/3 
-  Cleanup    : mysql-libs-5.1.61-4.el6.x86_64                                                                                                                                                   3/3 
-  Verifying  : mysql-5.1.66-1.el6_3.x86_64                                                                                                                                                      1/3 
-  Verifying  : mysql-libs-5.1.66-1.el6_3.x86_64                                                                                                                                                 2/3 
-  Verifying  : mysql-libs-5.1.61-4.el6.x86_64                                                                                                                                                   3/3 
-
+Updating   : mysql-libs-5.1.66-1.el6_3.x86_64                                                                                                                                                 1/3 
+Installing : mysql-5.1.66-1.el6_3.x86_64                                                                                                                                                      2/3 
+Cleanup    : mysql-libs-5.1.61-4.el6.x86_64                                                                                                                                                   3/3 
+Verifying  : mysql-5.1.66-1.el6_3.x86_64                                                                                                                                                      1/3 
+Verifying  : mysql-libs-5.1.66-1.el6_3.x86_64                                                                                                                                                 2/3 
+Verifying  : mysql-libs-5.1.61-4.el6.x86_64                                                                                                                                                   3/3 
 Installed:
-  mysql.x86_64 0:5.1.66-1.el6_3                                                                                                                                                                     
-
+ mysql.x86_64 0:5.1.66-1.el6_3                                                                                                                                                                     
 Dependency Updated:
-  mysql-libs.x86_64 0:5.1.66-1.el6_3                                                                                                                                                                
-
+ mysql-libs.x86_64 0:5.1.66-1.el6_3                                                                                                                                                                
 Complete!
 </pre>
 
-
 * Clone the [Toolchain Example #5](https://github.com/dtolabs/toolchain-example5) repository:
-* NOTE:  for anonymous read-only access, use the read-only url: [git://github.com/dtolabs/toolchain-example5.git](git://github.com/dtolabs/toolchain-example5.git)
 <pre>
 [anthony@centos63-toolchain-example5 ~]$ mkdir src
 [anthony@centos63-toolchain-example5 ~]$ cd src
