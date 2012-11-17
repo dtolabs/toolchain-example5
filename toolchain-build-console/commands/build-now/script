@@ -38,6 +38,9 @@ rerun jboss-as-rpm:build-now
 rerun mysql-connector-java-rpm:build-now
 rerun seam-examples:build-now
 
+rerun booking-application-server:build-now
+rerun booking-database-server:build-now
+
 exit $?
 
 # Done
