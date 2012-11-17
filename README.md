@@ -131,13 +131,6 @@ Receiving objects: 100% (90/90), 4.04 MiB | 1.48 MiB/s, done.
 Resolving deltas: 100% (22/22), done.
 </pre>
 
-* Build and Install the booking-application-server and booking-database-server rerun modules
-<pre>
-[anthony@centos63-toolchain-example5 ~]$  cd toolchain-example5
-[anthony@centos63-toolchain-example5 toolchain-example5]$ rerun  -M .  booking-application-server:install-module  --build true
-[anthony@centos63-toolchain-example5 toolchain-example5]$ rerun  -M .  booking-database-server:install-module  --build true
-</pre>
-
 * Deploy the toolchain build console:
 <pre>
 [chuck@mvn-sdp-0 toolchain-example5]$  rerun -M . toolchain-build-console: deploy
