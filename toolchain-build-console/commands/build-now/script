@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+#
+#/ command: toolchain-build-console:build-now: "Run all the Jenkins build jobs"
+#
+#/ usage: rerun toolchain-build-console:build-now [options]
+#
+#/ rerun env variables: RERUN, RERUN_VERSION, RERUN_MODULES, RERUN_MODULE_DIR
+#/ option variables: 
+
+# Read module function library.
+. $RERUN_MODULE_DIR/lib/functions.sh || { 
+  echo >&2 "Failed loading function library." ; exit 1 ; 
+}
+
+# Error handling
+# ---------------
+# * Trap calls `rerun_die` with standard message.
+# * Exit upon command errors or accessing unset variables.
+#   * See [set](http://ss64.com/bash/set.html)
+trap 'rerun_die $? "*** command failed: toolchain-build-console:build-now. ***"' ERR
+set -o nounset -o pipefail
+
+# Parse the command options.
+[[ -r $RERUN_MODULE_DIR/commands/build-now/options.sh ]] && {
+    . $RERUN_MODULE_DIR/commands/build-now/options.sh || rerun_die "Failed loading options parser."
+    rerun_options_parse "$@"
+}
+
+
+# ------------------------------
+# Your implementation goes here.
+# ------------------------------
+
+# Run the Jenkins jobs:
+rerun booking-mysql-data-rpm:build-now
+rerun jboss-as-config-rpm:build-now
+rerun jboss-as-rpm:build-now
+rerun mysql-connector-java-rpm:build-now
+rerun seam-examples:build-now
+
+exit $?
+
+# Done

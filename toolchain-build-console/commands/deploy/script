@@ -43,6 +43,9 @@ rerun toolchain-build-console:start
 # Configure the build console:
 rerun toolchain-build-console:configure
 
+# Run the build jobs:
+rerun toolchain-build-console:build-now
+
 exit $?
 
 # Done
