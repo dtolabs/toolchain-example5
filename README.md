@@ -11,12 +11,12 @@ DTO Lab's fork of the [Seam Examples](https://github.com/dtolabs/seam-examples) 
 Infrastructure
 --------------
 
-A single pre-provisioned Red Hat Linux (tested on "CentOS release 6.2") instance for build, repository, deployment, application and database services.
+A single pre-provisioned Red Hat/CentOS Linux instance for build, repository, deployment, application and database services.
 
 Toolchain
 ---------
 
-* Souce code management: GitHub/Git
+* Source code management: GitHub/Git
 * Build tool: Maven and Rerun
 * Build console: Jenkins
 * Package format: RPM
@@ -29,7 +29,7 @@ Requirements
 
 * System requirements:
     * 2GB RAM, 8 GB disk
-    * 64-bit CentOS Linux 6.2 or later
+    * 64-bit CentOS Linux 6.3 or later
     * Internet access (to GitHub and standard Yum repositories)
     
 Preparations
