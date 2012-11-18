@@ -53,28 +53,10 @@ centos63-toolchain-example5
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 </pre>
 
-    * Disable SELinux and reboot:
-<pre>
-[chuck@localhost ~]$ sudo vi /etc/sysconfig/selinux 
-[chuck@localhost ~]$ grep ^SELINUX= /etc/sysconfig/selinux 
-SELINUX=disabled
-[chuck@localhost ~]$ sudo reboot
-</pre>
-
 * User requirements:
     * Non-root user account ...
     * ... with sudo access to run any command as root without a password (e.g. wheel group membership)
     * ... sudo requiretty disabled to run any command without an interactive shell session (e.g. "Defaults requiretty" commented out)
-
-* Repositories:
-   * Configure the [EPEL repository](http://dl.fedoraproject.org/pub/epel/6/x86_64/repoview/epel-release.html). e.g:
-<pre>
-[anthony@centos63-toolchain-example5 ~]$ sudo rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-7.noarch.rpm
-Retrieving http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-7.noarch.rpm
-warning: /var/tmp/rpm-tmp.4fSCLZ: Header V3 RSA/SHA256 Signature, key ID 0608b895: NOKEY
-Preparing...                ########################################### [100%]
-   1:epel-release           ########################################### [100%]
-</pre>
 
 * Git setup:
     * Install git:
@@ -88,7 +70,17 @@ Complete!
 git version 1.7.1
 </pre>
 
-* Obtain latest version of the rerun-modules repo definition from [Rerun Modules Downloads](https://github.com/rerun-modules/rerun-modules/downloads), obtain the link and execute the following replacing example url shown inline:
+* Repositories:
+   * Configure the [EPEL repository](http://dl.fedoraproject.org/pub/epel/6/x86_64/repoview/epel-release.html). e.g:
+<pre>
+[anthony@centos63-toolchain-example5 ~]$ sudo rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-7.noarch.rpm
+Retrieving http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-7.noarch.rpm
+warning: /var/tmp/rpm-tmp.4fSCLZ: Header V3 RSA/SHA256 Signature, key ID 0608b895: NOKEY
+Preparing...                ########################################### [100%]
+   1:epel-release           ########################################### [100%]
+</pre>
+
+   * Obtain latest version of the rerun-modules repo definition from [Rerun Modules Downloads](https://github.com/rerun-modules/rerun-modules/downloads), obtain the link and execute the following replacing example url shown inline:
 <pre>
 [chuck@sdp-centos-63-64-1 toolchain-example5]$  sudo rpm -Uvh https://github.com/downloads/rerun-modules/rerun-modules/rerun-modules-repo-1.0-21.noarch.rpm
 Retrieving https://github.com/downloads/rerun-modules/rerun-modules/rerun-modules-repo-1.0-21.noarch.rpm
@@ -106,6 +98,17 @@ Preparing...                ########################################### [100%]
 
 * Install rpm-build, mysql, and dependent Rerun modules
 <pre>
+rerun-ssh-1.0.0-7.noarch
+rerun-apache-maven-1.0-10.noarch
+rerun-1.0-121.noarch
+rerun-rundeck-1.0-17.noarch
+rerun-rpm-1.0.0-26.noarch
+rerun-github-1.0.0-26.noarch
+rerun-jboss-as-1.0-20.noarch
+rerun-mysql-1.0.0-13.noarch
+rerun-modules-repo-1.0-21.noarch
+rerun-jenkins-1.0.0-28.noarch
+
 [chuck@sdp-centos-63-64-1 toolchain-example5]$ sudo yum -y install rpm-build mysql  rerun-mysql rerun-jenkins rerun-rundeck rerun-jboss-as
 .
 .
@@ -138,6 +141,9 @@ remote: Total 90 (delta 22), reused 87 (delta 19)
 Receiving objects: 100% (90/90), 4.04 MiB | 1.48 MiB/s, done.
 Resolving deltas: 100% (22/22), done.
 </pre>
+
+Setup
+-----
 
 * Deploy the toolchain build console:
 <pre>
@@ -198,17 +204,20 @@ nohup: redirecting stderr to stdout
 
 * TODO: display deploy console here
 
-* Append Rundeck Public SSH Key to your own authorized_keys file
-<pre>
-[chuck@sdp-centos-63-64-1 ]$ sudo cat /var/lib/rundeck/.ssh/id_rsa.pub >> $HOME/.ssh/authorized_keys
-[chuck@mvn-sdp-0 toolchain-example5]$ sudo su - rundeck
-[rundeck@mvn-sdp-0 ~]$ set -o vi
-[rundeck@mvn-sdp-0 ~]$ ssh chuck@localhost id
-uid=500(chuck) gid=500(chuck) groups=500(chuck),10(wheel),503(jboss-as)
-[rundeck@mvn-sdp-0 ~]$ exit
-[chuck@mvn-sdp-0 toolchain-example5]$ 
-</pre>
+Usage
+-----
 
-* Run the deploy-seam-booking deploy job... TODO: display dtolabs-toolchain-example5-deploy-seam-booking here
+* Review the builds
 
+* Use the Rundeck Run tab
 
+* Use the application and database server deployment jobs.
+
+Removing the example from the system
+-----------------------------------
+
+1159  rerun booking-application-server:remove
+ 1160  rerun booking-database-server:remove
+ 1161  ls
+ 1162  rerun toolchain-build-console:remove
+ 1163  rerun toolchain-deploy-console:remove
