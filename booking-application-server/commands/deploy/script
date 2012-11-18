@@ -2,10 +2,10 @@
 #
 #/ command: booking-application-server:deploy: "Deploy the Booking Application Server"
 #
-#/ usage: rerun booking-application-server:deploy  --jboss-as-package-file <>  --jboss-as-config-package-file <>  --mysql-connector-package-file <>  --seam-booking-package-file <> 
+#/ usage: rerun booking-application-server:deploy  --jboss-as-package-file <>  --jboss-as-config-package-file <>  --seam-booking-package-file <>  --mysql-connector-java-package-file <> 
 #
 #/ rerun env variables: RERUN, RERUN_VERSION, RERUN_MODULES, RERUN_MODULE_DIR
-#/ option variables: JBOSS_AS_PACKAGE_FILE JBOSS_AS_CONFIG_PACKAGE_FILE MYSQL_CONNECTOR_PACKAGE_FILE SEAM_BOOKING_PACKAGE_FILE
+#/ option variables: JBOSS_AS_PACKAGE_FILE JBOSS_AS_CONFIG_PACKAGE_FILE SEAM_BOOKING_PACKAGE_FILE MYSQL_CONNECTOR_JAVA_PACKAGE_FILE
 
 # Read module function library.
 . $RERUN_MODULE_DIR/lib/functions.sh || { 
@@ -33,11 +33,7 @@ set -o nounset -o pipefail
 
 rerun booking-application-server: stop
 
-rerun booking-application-server: install \
-      --jboss-as-package-file ${JBOSS_AS_PACKAGE_FILE} \
-      --jboss-as-config-package-file ${JBOSS_AS_CONFIG_PACKAGE_FILE} \
-      --mysql-connector-package-file ${MYSQL_CONNECTOR_PACKAGE_FILE} \
-      --seam-booking-package-file ${SEAM_BOOKING_PACKAGE_FILE}
+rerun booking-application-server: install --jboss-as-package-file ${JBOSS_AS_PACKAGE_FILE} --jboss-as-config-package-file ${JBOSS_AS_CONFIG_PACKAGE_FILE} --mysql-connector-java-package-file ${MYSQL_CONNECTOR_JAVA_PACKAGE_FILE} --seam-booking-package-file ${SEAM_BOOKING_PACKAGE_FILE}
 
 rerun booking-application-server: configure
 

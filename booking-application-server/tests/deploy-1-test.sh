@@ -23,7 +23,7 @@ it_works_from_a_fresh_install() {
   # Remove the Booking application server instance.
   rerun booking-application-server:remove --cleanup true
   # Deploy the Booking application server.
-  rerun booking-application-server:install --jboss-as-package-file ${JBOSS_AS_PACKAGE_FILE} --jboss-as-config-package-file ${JBOSS_AS_CONFIG_PACKAGE_FILE} --mysql-connector-package-file ${MYSQL_CONNECTOR_PACKAGE_FILE} --seam-booking-package-file ${SEAM_BOOKING_PACKAGE_FILE}
+  rerun booking-application-server:install --jboss-as-package-file ${JBOSS_AS_PACKAGE_FILE} --jboss-as-config-package-file ${JBOSS_AS_CONFIG_PACKAGE_FILE} --mysql-connector-java-package-file ${MYSQL_CONNECTOR_JAVA_PACKAGE_FILE} --seam-booking-package-file ${SEAM_BOOKING_PACKAGE_FILE}
   # Remove the Booking application server instance.
   rerun booking-application-server:remove --cleanup true
 

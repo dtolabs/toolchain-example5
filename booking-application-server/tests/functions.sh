@@ -22,9 +22,9 @@ build-booking-application-server-test-packages() {
     rerun jboss-as-config-rpm:build --release test
   fi
 
-  MYSQL_CONNECTOR_PACKAGE_FILE="${RERUN_MODULES}/mysql-connector-java-rpm/RPMS/noarch/mysql-connector-java-5.1.22-test.noarch.rpm"
+  MYSQL_CONNECTOR_JAVA_PACKAGE_FILE="${RERUN_MODULES}/mysql-connector-java-rpm/RPMS/noarch/mysql-connector-java-5.1.22-test.noarch.rpm"
 
-  if [[ ! -r ${MYSQL_CONNECTOR_PACKAGE_FILE} ]]
+  if [[ ! -r ${MYSQL_CONNECTOR_JAVA_PACKAGE_FILE} ]]
   then
     rerun mysql-connector-java-rpm:build --release test
   fi

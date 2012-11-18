@@ -3,4 +3,4 @@
 # Fri Nov 16 09:24:40 PST 2012
 NAME=install
 DESCRIPTION="Install the Booking Application Server"
-OPTIONS="jboss-as-package-file jboss-as-config-package-file mysql-connector-package-file seam-booking-package-file"
+OPTIONS="jboss-as-package-file jboss-as-config-package-file seam-booking-package-file mysql-connector-java-package-file"
