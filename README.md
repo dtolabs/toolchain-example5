@@ -204,14 +204,14 @@ nohup: redirecting stderr to stdout
 Using the Example
 -----
 * Run any command as the toolchain user by filtering by the "toolchain-user" tag and entering a command in the command field:
-![rundeck-tc-user](https://github.com/dtolabs/toolchain-example5/raw/master/doc/rundeck-tc-user.jpg)
+![rundeck-tc-user](https://github.com/dtolabs/toolchain-example5/raw/master/.images/rundeck-tc-user.jpg)
 
 * Ensure the builds started by the build console deploy are complete.
-![building-console-jobs](https://github.com/dtolabs/toolchain-example5/raw/master/doc/build-console-jobs.jpg)
-![building-console-jobs](https://github.com/dtolabs/toolchain-example5/raw/master/doc/build-console-jobs-built.jpg)
+![building-console-jobs](https://github.com/dtolabs/toolchain-example5/raw/master/.images/build-console-jobs.jpg)
+![building-console-jobs](https://github.com/dtolabs/toolchain-example5/raw/master/.images/build-console-jobs-built.jpg)
 
 * Run the Booking database server deploy job
-![building-console-jobs](https://github.com/dtolabs/toolchain-example5/raw/master/doc/deploy-console-database-server-deploy.jpg)
+![building-console-jobs](https://github.com/dtolabs/toolchain-example5/raw/master/.images/deploy-console-database-server-deploy.jpg)
 
 * Check that the Booking database exists
 <pre>
@@ -233,10 +233,10 @@ mysql&gt; show databases;
 </pre>
 
 * Run the Booking application server deploy job
-![building-console-jobs](https://github.com/dtolabs/toolchain-example5/raw/master/doc/deploy-console-application-server-deploy.jpg)
+![building-console-jobs](https://github.com/dtolabs/toolchain-example5/raw/master/.images/deploy-console-application-server-deploy.jpg)
 
 * Navigate to the sample Booking application and make a booking at [http://<i>localhost</i>:8180/seam-booking](http://localhost:8180/seam-booking) (replace localhost for your hostname)
-![seam-booking-login](https://github.com/dtolabs/toolchain-example5/raw/master/doc/seam-booking-login.jpg)
+![seam-booking-login](https://github.com/dtolabs/toolchain-example5/raw/master/.images/seam-booking-login.jpg)
 
 
 
