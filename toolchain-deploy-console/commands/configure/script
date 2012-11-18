@@ -31,19 +31,20 @@ set -o nounset -o pipefail
 # Your implementation goes here.
 # ------------------------------
 
-# Install the plug-ins required by the example builds.
-#rerun rundeck:install-plugin --plugin-name somePlugin?
-
-# Configure the somePlugin? plugin.
-#rerun rundeck:configure-rundeck-plugin
-
-# Restart Rundeck to enable the configuration (if we add any above).
-#rerun rundeck:restart
-
-# Create the Jenkins jobs:
+# Create the example Rundeck jobs.
 rerun booking-application-server:create-deploy-jobs
 rerun booking-database-server:create-deploy-jobs
 
+# Setup the Rundeck user as an authorized key for the toolchain user.
+TYPE=$(sudo cat  ~rundeck/.ssh/id_rsa.pub | cut -d' ' -f1 | cut -d- -f2)
+PUBLIC_KEY=$(sudo cat  ~rundeck/.ssh/id_rsa.pub | cut -d' ' -f2)
+COMMENT=$(sudo cat  ~rundeck/.ssh/id_rsa.pub | cut -d' ' -f3-)
+
+rerun ssh:add-authorized-key --public-key "${PUBLIC_KEY}" --type ${TYPE} --comment "${COMMENT}"
+
+# Setup localhost as a known host of the Rundeck user
+HOST_PUBLIC_KEY=$(cat /etc/ssh/ssh_host_${TYPE}_key.pub | cut -d' ' -f2)
+sudo -u rundeck rerun ssh:add-host-key --public-key "${HOST_PUBLIC_KEY}" --type ${TYPE} --hostname localhost
 
 exit $?
 
