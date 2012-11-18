@@ -1,0 +1,45 @@
+<joblist>
+  <job>
+    <group>booking-application-server</group>
+    <id>dtolabs-toolchain-example5-booking-application-server-deploy-job</id>
+    <uuid>dtolabs-toolchain-example5-booking-application-server-deploy-job</uuid>
+    <name>deploy</name>
+    <description>Deploy the Booking application server</description>
+
+    <loglevel>INFO</loglevel>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <scripturl>http://localhost:8080/job/dtolabs-toolchain-example5-master-booking-application-server-module-bin/lastSuccessfulBuild/artifact/rerun-booking-application-server.bin</scripturl>
+        <scriptargs>booking-application-server:deploy --seam-booking-package-file ${option.seam-booking-artifact} --jboss-as-package-file ${option.jboss-as-artifact} --jboss-as-config-package-file ${option.jboss-as-config-artifact} --mysql-connector-java-package-file ${option.mysql-connector-java-artifact}</scriptargs>
+      </command>
+    </sequence>
+    <context>
+      <project>dtolabs-toolchain-example5</project>
+      <options>
+        <option required='true' name='jboss-as-artifact' enforcedvalues='true' valuesUrl='http://localhost:8080/plugin/rundeck/options/artifact?project=dtolabs-toolchain-example5-master-jboss-as-rpm&amp;artifactRegex=.*\.rpm'>
+          <description>url of the selected jboss-as artifact</description>
+        </option>
+        <option required='true' name='jboss-as-config-artifact' enforcedvalues='true' valuesUrl='http://localhost:8080/plugin/rundeck/options/artifact?project=dtolabs-toolchain-example5-master-jboss-as-config-rpm&amp;artifactRegex=.*\.rpm'>
+          <description>url of the selected jboss-as configuration artifact</description>
+        </option>
+        <option required='true' name='mysql-connector-java-artifact' enforcedvalues='true' valuesUrl='http://localhost:8080/plugin/rundeck/options/artifact?project=dtolabs-toolchain-example5-master-mysql-connector-java-rpm&amp;artifactRegex=.*\.rpm'>
+          <description>url of the selected mysql connector artifact</description>
+        </option>
+        <option required='true' name='seam-booking-artifact' enforcedvalues='true' valuesUrl='http://localhost:8080/plugin/rundeck/options/artifact?project=dtolabs-seam-examples-master&amp;artifactRegex=.*\.rpm'>
+          <description>url of the selected seam booking artifact</description>
+        </option>
+      </options>
+    </context>
+    <dispatch>
+      <threadcount>1</threadcount>
+      <keepgoing>false</keepgoing>
+      <excludePrecedence>true</excludePrecedence>
+      <rankOrder>ascending</rankOrder>
+    </dispatch>
+    <nodefilters>
+      <include>
+        <tags>toolchain-user</tags>
+      </include>
+    </nodefilters>
+  </job>
+</joblist>

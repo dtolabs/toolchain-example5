@@ -12,5 +12,7 @@
 describe "create-jobs"
 
 it_can_create_the_jenkins_jobs() {
+    rerun toolchain-build-console:deploy
     rerun seam-examples:create-jobs
+    rerun toolchain-build-console:remove
 }

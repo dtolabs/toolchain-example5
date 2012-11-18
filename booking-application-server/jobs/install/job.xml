@@ -1,14 +1,22 @@
 <joblist>
   <job>
-    <id>dtolabs-toolchain-example5-deploy-seam-booking</id>
+    <!-- we implement a predicatable uuid in order to easily reference uuid from jenkins plugin 
+         otherwise we have to figure out how to obtain the randomly generated uuid and configure accordingly in the jenkins/rundeck plugin
+         Scheme for uuid is: RUNDECKPROJECT-GROUP-JOBNAME
+      -->
+    <group>booking-application-server</group>
+    <id>dtolabs-toolchain-example5-booking-application-server-install-job</id>
+    <uuid>dtolabs-toolchain-example5-booking-application-server-install-job</uuid>
+    <name>install</name>
+    <description>Install the Booking application server's packages</description>
+
     <loglevel>INFO</loglevel>
     <sequence keepgoing='false' strategy='node-first'>
       <command>
-        <exec>rerun booking-application-server:deploy --seam-booking-package-file ${option.seam-booking-artifact} --jboss-as-package-file ${option.jboss-as-artifact} --jboss-as-config-package-file ${option.jboss-as-config-artifact} --mysql-connector-java-package-file ${option.mysql-connector-java-artifact} </exec>
+        <scripturl>http://localhost:8080/job/dtolabs-toolchain-example5-master-booking-application-server-module-bin/lastSuccessfulBuild/artifact/rerun-booking-application-server.bin</scripturl>
+        <scriptargs>booking-application-server:deploy --seam-booking-package-file ${option.seam-booking-artifact} --jboss-as-package-file ${option.jboss-as-artifact} --jboss-as-config-package-file ${option.jboss-as-config-artifact} --mysql-connector-java-package-file ${option.mysql-connector-java-artifact}</scriptargs>
       </command>
     </sequence>
-    <description>Deploy the seam booking application</description>
-    <name>deploy-seam-booking</name>
     <context>
       <project>dtolabs-toolchain-example5</project>
       <options>
@@ -32,12 +40,10 @@
       <excludePrecedence>true</excludePrecedence>
       <rankOrder>ascending</rankOrder>
     </dispatch>
-    <uuid>dtolabs-toolchain-example5-deploy-seam-booking</uuid>
     <nodefilters>
       <include>
         <tags>toolchain-user</tags>
       </include>
     </nodefilters>
-    <group>seam-booking</group>
   </job>
 </joblist>

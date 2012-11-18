@@ -16,7 +16,16 @@ then
    source "${RERUN_MODULES}/booking-application-server/tests/functions.sh"
 fi
 
-it_runs_without_arguments() {
-   testdeploy
+it_works_from_a_fresh_install() {
+  # Make sure the required test packages are built.
+  build-booking-application-server-test-packages
+
+  # Remove the Booking application server instance.
+  rerun booking-application-server:remove --cleanup true
+  # Deploy the Booking application server.
+  rerun booking-application-server:install --jboss-as-package-file ${JBOSS_AS_PACKAGE_FILE} --jboss-as-config-package-file ${JBOSS_AS_CONFIG_PACKAGE_FILE} --mysql-connector-package-file ${MYSQL_CONNECTOR_PACKAGE_FILE} --seam-booking-package-file ${SEAM_BOOKING_PACKAGE_FILE}
+  # Remove the Booking application server instance.
+  rerun booking-application-server:remove --cleanup true
+
 }
 

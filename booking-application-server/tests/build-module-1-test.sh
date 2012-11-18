@@ -12,8 +12,9 @@
 describe "build-module"
 
 
-it_runs_without_a_real_test() {
-    echo "NOTE: this test sucks because we are limited to where we can write this module" 1>&2
-    exit 0
+it_runs_without_arguments() {
+
+  rerun booking-application-server:build-module
+  rm ${RERUN_MODULES}/rerun-booking-application-server-1.0-1.noarch.rpm
 }
 

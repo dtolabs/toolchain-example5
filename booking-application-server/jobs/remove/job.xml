@@ -1,0 +1,41 @@
+<joblist>
+  <job>
+    <!-- we implement a predicatable uuid in order to easily reference uuid from jenkins plugin 
+         otherwise we have to figure out how to obtain the randomly generated uuid and configure accordingly in the jenkins/rundeck plugin
+         Scheme for uuid is: RUNDECKPROJECT-GROUP-JOBNAME
+      -->
+    <group>booking-application-server</group>
+    <id>dtolabs-toolchain-example5-booking-application-server-remove-job</id>
+    <uuid>dtolabs-toolchain-example5-booking-application-server-remove-job</uuid>
+    <name>remove</name>
+    <description>Remove the Booking application server from the system</description>
+
+
+    <loglevel>INFO</loglevel>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <scripturl>http://localhost:8080/job/dtolabs-toolchain-example5-master-booking-application-server-module-bin/lastSuccessfulBuild/artifact/rerun-booking-application-server.bin</scripturl>
+        <scriptargs>booking-application-server:remove</scriptargs>
+      </command>
+    </sequence>
+    <context>
+      <project>dtolabs-toolchain-example5</project>
+      <options>
+        <option name='cleanup' enforcedvalues='true' values='true,false' value='true'>
+          <description>cleanup configuration and logs after removing</description>
+        </option>
+      </options>
+    </context>
+    <dispatch>
+      <threadcount>1</threadcount>
+      <keepgoing>false</keepgoing>
+      <excludePrecedence>true</excludePrecedence>
+      <rankOrder>ascending</rankOrder>
+    </dispatch>
+    <nodefilters>
+      <include>
+        <tags>toolchain-user</tags>
+      </include>
+    </nodefilters>
+  </job>
+</joblist>

@@ -4,16 +4,18 @@
          otherwise we have to figure out how to obtain the randomly generated uuid and configure accordingly in the jenkins/rundeck plugin
          Scheme for uuid is: RUNDECKPROJECT-GROUP-JOBNAME
       -->
-    <group>jboss-as</group>
-    <name>erase-jboss-as</name>
-    <id>dtolabs-toolchain-example5-erase-jboss-as</id>
-    <uuid>dtolabs-toolchain-example5-erase-jboss-as</uuid>
-    <description>Erase the JBoss Application Server</description>
+    <group>booking-application-server</group>
+    <id>dtolabs-toolchain-example5-booking-application-server-status-job</id>
+    <uuid>dtolabs-toolchain-example5-booking-application-server-status-job</uuid>
+    <name>status</name>
+    <description>Check the Booking application server</description>
+
 
     <loglevel>INFO</loglevel>
     <sequence keepgoing='false' strategy='node-first'>
       <command>
-        <exec>rerun jboss-as: erase</exec>
+        <scripturl>http://localhost:8080/job/dtolabs-toolchain-example5-master-booking-application-server-module-bin/lastSuccessfulBuild/artifact/rerun-booking-application-server.bin</scripturl>
+        <scriptargs>booking-application-server:status</scriptargs>
       </command>
     </sequence>
     <context>

@@ -17,9 +17,11 @@ then
 fi
 
 it_runs_without_arguments() {
-    testinstall
-    rerun booking-application-server: start
-    rerun booking-application-server: create-jobs
-    rerun booking-application-server: stop
+    # Make sure the deployment console is running.
+    rerun toolchain-deploy-console:deploy
+    # Create the Booking application server's jobs.
+    rerun booking-application-server:create-jobs
+    # Remove
+    rerun toolchain-deploy-console:remove
 }
 
