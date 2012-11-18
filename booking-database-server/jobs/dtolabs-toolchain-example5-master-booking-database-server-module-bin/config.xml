@@ -49,12 +49,12 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>rerun -M . stubbs:archive --modules booking-database-server --file rerun-booking-database-server-1.0-$BUILD_NUMBER.bin</command>
+      <command>rerun -M . stubbs:archive --modules booking-database-server --file rerun-booking-database-server.bin</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
-      <artifacts>rerun-booking-database-server-1.0-$BUILD_NUMBER.bin</artifacts>
+      <artifacts>rerun-booking-database-server.bin</artifacts>
       <latestOnly>false</latestOnly>
     </hudson.tasks.ArtifactArchiver>
   </publishers>
