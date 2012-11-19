@@ -67,7 +67,12 @@
   <settingConfigId/>
   <globalSettingConfigId/>
   <reporters/>
-  <publishers/>
+  <publishers>
+    <hudson.tasks.ArtifactArchiver>
+      <artifacts>booking-rpm/target/rpm/seam-booking-rpm/RPMS/noarch/seam-booking-rpm-3.2.0-$BUILD_NUMBER.noarch.rpm</artifacts>
+      <latestOnly>false</latestOnly>
+    </hudson.tasks.ArtifactArchiver>
+  </publishers>
   <buildWrappers/>
   <prebuilders/>
   <postbuilders/>
