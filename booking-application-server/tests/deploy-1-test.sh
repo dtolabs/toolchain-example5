@@ -11,8 +11,12 @@
 
 describe "deploy"
 
+if [ -f "${RERUN_MODULES}/booking-application-server/tests/functions.sh" ]
+then
+   source "${RERUN_MODULES}/booking-application-server/tests/functions.sh"
+fi
 
 it_runs_without_arguments() {
-   return 0
+   testdeploy
 }
 

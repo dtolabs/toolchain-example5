@@ -17,3 +17,11 @@ testinstall() {
       --mysql-connector-package-file "file://${TEST_MODULE_DIR}/examples/rpms/mysql-connector-java-5.1.22-2.noarch.rpm" \
       --seam-booking-package-file "file://${TEST_MODULE_DIR}/examples/rpms/seam-booking-rpm-3.2.0-1.noarch.rpm"
 }
+
+testdeploy() {
+   rerun booking-application-server: stop
+   testinstall
+   rerun booking-application-server: configure
+   rerun booking-application-server: start
+   rerun booking-application-server: stop
+}

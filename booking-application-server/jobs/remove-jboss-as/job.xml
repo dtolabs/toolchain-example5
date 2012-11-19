@@ -1,0 +1,28 @@
+<joblist>
+  <job>
+    <!-- we implement a predicatable uuid in order to easily reference uuid from jenkins plugin 
+         otherwise we have to figure out how to obtain the randomly generated uuid and configure accordingly in the jenkins/rundeck plugin
+         Scheme for uuid is: RUNDECKPROJECT-GROUP-JOBNAME
+      -->
+    <group>jboss-as</group>
+    <name>remove-jboss-as</name>
+    <id>dtolabs-toolchain-example5-remove-jboss-as</id>
+    <uuid>dtolabs-toolchain-example5-remove-jboss-as</uuid>
+    <description>Remove the JBoss Application Server</description>
+
+    <loglevel>INFO</loglevel>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <exec>rerun jboss-as: remove --cleanup $RD_OPTION_CLEANUP</exec>
+      </command>
+    </sequence>
+    <context>
+      <project>dtolabs-toolchain-example5</project>
+      <options>
+        <option name='cleanup' enforcedvalues='true' values='true,false' value='false'>
+          <description>cleanup configuration and logs after removing</description>
+        </option>
+      </options>
+    </context>
+  </job>
+</joblist>

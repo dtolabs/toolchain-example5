@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+#
+#/ command: booking-application-server:create-jobs: "Create the Rundeck job(s) for the Booking Application Server Deployment Process"
+#
+#/ usage: rerun booking-application-server:create-jobs [options]
+#
+#/ rerun env variables: RERUN, RERUN_VERSION, RERUN_MODULES, RERUN_MODULE_DIR
+#/ option variables: 
+
+# Read module function library.
+. $RERUN_MODULE_DIR/lib/functions.sh || { 
+  echo >&2 "Failed loading function library." ; exit 1 ; 
+}
+
+# Error handling
+# ---------------
+# * Trap calls `rerun_die` with standard message.
+# * Exit upon command errors or accessing unset variables.
+#   * See [set](http://ss64.com/bash/set.html)
+trap 'rerun_die "*** command failed: booking-application-server:create-jobs. ***"' ERR
+set -o nounset -o pipefail
+
+# Parse the command options.
+[[ -r $RERUN_MODULE_DIR/commands/create-jobs/options.sh ]] && {
+    . $RERUN_MODULE_DIR/commands/create-jobs/options.sh || rerun_die "Failed loading options parser."
+    rerun_options_parse "$@"
+}
+
+
+# ------------------------------
+# Your implementation goes here.
+# ------------------------------
+
+#
+# TODO:
+#    deploy jboss related artifacts including the application from Jenkins:
+#       dtolabs-seam-examples-master	
+#       dtolabs-toolchain-example5-jboss-as-config-rpm
+#       dtolabs-toolchain-example5-jboss-as-rpm
+#       dtolabs-toolchain-example5-mysql-connector-java-rpm
+#
+
+
+for FILE in $(ls -d $RERUN_MODULE_DIR/jobs/*/job.xml)
+do
+  rerun rundeck:create-job  --file $FILE
+done
+
+exit $?
+
+# Done

@@ -1,0 +1,23 @@
+<joblist>
+  <job>
+    <!-- we implement a predicatable uuid in order to easily reference uuid from jenkins plugin 
+         otherwise we have to figure out how to obtain the randomly generated uuid and configure accordingly in the jenkins/rundeck plugin
+         Scheme for uuid is: RUNDECKPROJECT-GROUP-JOBNAME
+      -->
+    <group>jboss-as</group>
+    <name>start-jboss-as</name>
+    <id>dtolabs-toolchain-example5-start-jboss-as</id>
+    <uuid>dtolabs-toolchain-example5-start-jboss-as</uuid>
+    <description>Start the JBoss Application Server</description>
+
+    <loglevel>INFO</loglevel>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <exec>rerun jboss-as: start</exec>
+      </command>
+    </sequence>
+    <context>
+      <project>dtolabs-toolchain-example5</project>
+    </context>
+  </job>
+</joblist>

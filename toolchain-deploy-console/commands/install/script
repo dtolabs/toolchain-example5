@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+#
+#/ command: toolchain-deploy-console:install: "install the deploy console"
+#
+#/ usage: rerun toolchain-deploy-console:install [options]
+#
+#/ rerun env variables: RERUN, RERUN_VERSION, RERUN_MODULES, RERUN_MODULE_DIR
+#/ option variables: 
+
+# Read module function library.
+. $RERUN_MODULE_DIR/lib/functions.sh || { 
+  echo >&2 "Failed loading function library." ; exit 1 ; 
+}
+
+# Error handling
+# ---------------
+# * Trap calls `rerun_die` with standard message.
+# * Exit upon command errors or accessing unset variables.
+#   * See [set](http://ss64.com/bash/set.html)
+trap 'rerun_die "*** command failed: toolchain-deploy-console:install. ***"' ERR
+set -o nounset -o pipefail
+
+# Parse the command options.
+[[ -r $RERUN_MODULE_DIR/commands/install/options.sh ]] && {
+    . $RERUN_MODULE_DIR/commands/install/options.sh || rerun_die "Failed loading options parser."
+    rerun_options_parse "$@"
+}
+
+
+# ------------------------------
+# Your implementation goes here.
+# ------------------------------
+
+# Bootstrap required rerun modules:
+sudo yum --quiet -q -y install rerun-rundeck
+sudo yum --quiet -q -y install rerun-jboss-as
+
+
+# Bootstrap required packages:
+sudo yum --quiet -q -y install java-openjdk
+sudo yum --quiet -q -y install xmlstarlet
+
+# Bootstrap Rundeck installation:
+rerun rundeck:install
+
+exit $?
+
+# Done
