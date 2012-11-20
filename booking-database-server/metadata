@@ -3,6 +3,6 @@
 NAME=booking-database-server
 DESCRIPTION="Manage the Booking application MySQL server deployment process"
 INTERPRETER="bash"
-VERSION=
+VERSION=1.0
 REQUIRES=mysql,rpm
 

@@ -86,6 +86,38 @@ Complete!
 [anthony@centos63-toolchain-example5 ~]$ git --version
 git version 1.7.1
 </pre>
+
+* Install mysql, mysql module and jboss-as module
+<pre>
+[anthony@centos63-toolchain-example5 ~]$ sudo yum -y install mysql rerun-mysql rerun-jboss-as
+.
+.
+.
+Transaction Test Succeeded
+Running Transaction
+Warning: RPMDB altered outside of yum.
+  Updating   : mysql-libs-5.1.66-1.el6_3.x86_64                                                                                                                                                 1/3 
+  Installing : mysql-5.1.66-1.el6_3.x86_64                                                                                                                                                      2/3 
+  Cleanup    : mysql-libs-5.1.61-4.el6.x86_64                                                                                                                                                   3/3 
+  Verifying  : mysql-5.1.66-1.el6_3.x86_64                                                                                                                                                      1/3 
+  Verifying  : mysql-libs-5.1.66-1.el6_3.x86_64                                                                                                                                                 2/3 
+  Verifying  : mysql-libs-5.1.61-4.el6.x86_64                                                                                                                                                   3/3 
+
+Installed:
+  mysql.x86_64 0:5.1.66-1.el6_3                                                                                                                                                                     
+
+Dependency Updated:
+  mysql-libs.x86_64 0:5.1.66-1.el6_3                                                                                                                                                                
+
+Complete!
+</pre>
+
+* Build and Install the booking-application-server and booking-database-server rerun modules
+<pre>
+[anthony@centos63-toolchain-example5 ~]$ rerun  -M .  booking-application-server:install-module  --build true
+[anthony@centos63-toolchain-example5 ~]$ rerun  -M .  booking-database-server:install-module  --build true
+</pre>
+
    * Clone the [Toolchain Example #5](https://github.com/dtolabs/toolchain-example5) repository:
    * NOTE:  for anonymous read-only access, use the read-only url: [git://github.com/dtolabs/toolchain-example5.git](git://github.com/dtolabs/toolchain-example5.git)
 <pre>

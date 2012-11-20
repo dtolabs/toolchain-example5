@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+#
+#/ command: booking-application-server:build-module: "build-module the booking-application-server module for distribution"
+#
+#/ usage: rerun booking-application-server:build-module [ --release <1>] 
+#
+#/ rerun env variables: RERUN, RERUN_VERSION, RERUN_MODULES, RERUN_MODULE_DIR
+#/ option variables: RELEASE
+
+# Read module function library.
+. $RERUN_MODULE_DIR/lib/functions.sh || { 
+  echo >&2 "Failed loading function library." ; exit 1 ; 
+}
+
+# Error handling
+# ---------------
+# * Trap calls `rerun_die` with standard message.
+# * Exit upon command errors or accessing unset variables.
+#   * See [set](http://ss64.com/bash/set.html)
+trap 'rerun_die "*** command failed: booking-application-server:build-module. ***"' ERR
+set -o nounset -o pipefail
+
+# Parse the command options.
+[[ -r $RERUN_MODULE_DIR/commands/build-module/options.sh ]] && {
+    . $RERUN_MODULE_DIR/commands/build-module/options.sh || rerun_die "Failed loading options parser."
+    rerun_options_parse "$@"
+}
+
+
+# ------------------------------
+# Your implementation goes here.
+# ------------------------------
+
+cd ${RERUN_MODULES}
+
+
+source $RERUN_MODULE_DIR/metadata
+if [ -z "${VERSION}" ]
+then
+   rerun_die "VERSION unset in  $RERUN_MODULE_DIR/metadata, will not build-module"
+fi
+
+rerun -M . stubbs:archive --format rpm --release "${RELEASE}" --modules booking-application-server  
+
+exit $?
+
+# Done

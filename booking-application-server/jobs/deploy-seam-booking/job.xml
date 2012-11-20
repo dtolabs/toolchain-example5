@@ -10,7 +10,7 @@
         <jobref name='stop-jboss-as' group='jboss-as' />
       </command>
       <command>
-        <exec>echo rerun booking-application-server:install --seam-booking-package-file $RD_OPTION_SEAM_BOOKING_ARTIFACT</exec>
+        <exec>echo rerun booking-application-server:deploy --seam-booking-package-file $RD_OPTION_SEAM_BOOKING_ARTIFACT --jboss-as-package-file $RD_OPTION_JBOSS_AS_ARTIFACT --jboss-as-config-package-file $RD_OPTION_JBOSS_AS_CONFIG_ARTIFACT --mysql-connector-java-package-file $RD_OPTION_MYSQL_CONNECTOR_JAVA_ARTIFACT</exec>
       </command>
       <command>
         <jobref name='start-jboss-as' group='jboss-as' />

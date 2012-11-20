@@ -3,6 +3,6 @@
 NAME=booking-application-server
 DESCRIPTION="Manage the Seam Booking Appliation Server"
 INTERPRETER="bash"
-VERSION=
-REQUIRES=
+VERSION=1.0
+REQUIRES=jboss-as,rpm
 

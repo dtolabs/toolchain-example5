@@ -3,6 +3,6 @@
 NAME=jboss-as-config-rpm
 DESCRIPTION="Manage the JBoss AS configuration RPM build process"
 INTERPRETER="bash"
-VERSION=
+VERSION=1.0
 REQUIRES=rpm,jenkins
 

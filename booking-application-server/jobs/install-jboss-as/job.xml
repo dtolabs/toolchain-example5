@@ -19,10 +19,12 @@
     <context>
       <project>dtolabs-toolchain-example5</project>
       <options>
-        <option name='artifact' enforcedvalues='true' valuesUrl='http://localhost:8080/plugin/rundeck/options/artifact?project=dtolabs-toolchain-example5-jboss-as-rpm&amp;artifactRegex=.*\.rpm'>
+        <option name='artifact' enforcedvalues='true' valuesUrl='http://localhost:8080/plugin/rundeck/options/artifact?project=dtolabs-toolchain-example5-master-jboss-as-rpm&amp;artifactRegex=.*\.rpm'>
           <description>reference to the url of the selected artifact</description>
         </option>
       </options>
     </context>
   </job>
 </joblist>
+
+        <option required='true' name='seam-booking-artifact' enforcedvalues='true' valuesUrl=
