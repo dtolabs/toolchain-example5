@@ -99,13 +99,15 @@ Receiving objects: 100% (90/90), 4.04 MiB | 1.48 MiB/s, done.
 Resolving deltas: 100% (22/22), done.
 </pre>
 
-* Install Rerun:
+* Install Rerun and dependent modules:
 <pre>
 [anthony@centos63-toolchain-example5 ~]$ sudo yum -y install rerun
 .
 .
 .
 Complete!
+
+[anthony@centos63-toolchain-example5 ~]$ sudo yum -y install rerun-jenkins rerun-rundeck
 </pre>
 
 * Deploy the toolchain build console:
