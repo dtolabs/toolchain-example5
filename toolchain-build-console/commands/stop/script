@@ -31,7 +31,8 @@ set -o nounset -o pipefail
 # Your implementation goes here.
 # ------------------------------
 
-rerun jenkins:stop 
+# only run stop if the module actually exists
+rpm -q rerun-jenkins >/dev/null 2>&1 && rerun jenkins:stop  || true;
 
 exit $?
 
