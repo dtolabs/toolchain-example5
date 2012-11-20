@@ -129,6 +129,38 @@ Shutting down Jenkins                                      [  OK  ]
 Starting Jenkins                                           [  OK  ]
 </pre>
 
+* Deploy the toolchain deploy console:
+<pre>
+[chuck@mvn-sdp-0 toolchain-example5]$ rerun -M . toolchain-deploy-console: deploy
+Stopping rundeckd:                                         [  OK  ]
+Failed to set locale, defaulting to C
+Failed to set locale, defaulting to C
+Package rerun-jboss-as-1.0-17.noarch already installed and latest version
+Failed to set locale, defaulting to C
+Package 1:java-1.6.0-openjdk-1.6.0.0-1.50.1.11.5.el6_3.x86_64 already installed and latest version
+Failed to set locale, defaulting to C
+Package matching xmlstarlet-1.3.1-1.el6.x86_64 already installed. Checking for update.
+Failed to set locale, defaulting to C
+Loaded plugins: fastestmirror, refresh-packagekit, security
+Setting up Local Package Process
+latest.rpm                                                                                                                                                                   | 2.1 kB     00:00     
+Examining /var/tmp/yum-root-RQyb9A/latest.rpm: rundeck-repo-2-0.noarch
+/var/tmp/yum-root-RQyb9A/latest.rpm: does not update installed package.
+Nothing to do
+Failed to set locale, defaulting to C
+Loaded plugins: fastestmirror, refresh-packagekit, security
+Loading mirror speeds from cached hostfile
+ * base: mirror.sanctuaryhost.com
+ * epel: linux.mirrors.es.net
+ * extras: holmes.umflint.edu
+ * updates: centos.mirror.sea.rackd.net
+Setting up Install Process
+Package rundeck-1.4.4-1.3.noarch already installed and latest version
+Nothing to do
+Starting rundeckd:                                         [  OK  ]
+nohup: redirecting stderr to stdout
+</pre>
+
 
 Anthony Shortland
 anthony@dtosolutions.com
