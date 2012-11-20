@@ -40,6 +40,7 @@ set -o nounset -o pipefail
 #       dtolabs-toolchain-example5-mysql-connector-java-rpm
 #
 
+rerun rundeck:create-project  --name dtolabs-toolchain-example5
 
 for FILE in $(ls -d $RERUN_MODULE_DIR/jobs/*/job.xml)
 do
