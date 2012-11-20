@@ -1,0 +1,38 @@
+<joblist>
+  <job>
+    <group>seam-booking</group>
+    <name>deploy-seam-booking</name>
+    <id>dtolabs-toolchain-example5-deploy-seam-booking</id>
+    <uuid>dtolabs-toolchain-example5-deploy-seam-booking</uuid>
+    <loglevel>INFO</loglevel>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <jobref name='stop-jboss-as' group='jboss-as' />
+      </command>
+      <command>
+        <exec>echo rerun booking-application-server:install --seam-booking-package-file $RD_OPTION_SEAM_BOOKING_ARTIFACT</exec>
+      </command>
+      <command>
+        <jobref name='start-jboss-as' group='jboss-as' />
+      </command>
+    </sequence>
+    <description>Deploy the seam booking application</description>
+    <context>
+      <project>dtolabs-toolchain-example5</project>
+      <options>
+        <option required='true' name='seam-booking-artifact' enforcedvalues='true' valuesUrl='http://localhost:8080/plugin/rundeck/options/artifact?project=dtolabs-seam-examples-master&amp;artifactRegex=.*\.rpm'>
+          <description>url of the selected seam booking artifact</description>
+        </option>
+        <option required='true' name='jboss-as-artifact' enforcedvalues='true' valuesUrl='http://localhost:8080/plugin/rundeck/options/artifact?project=dtolabs-toolchain-example5-jboss-as-rpm&amp;artifactRegex=.*\.rpm'>
+          <description>url of the selected jboss-as artifact</description>
+        </option>
+        <option required='true' name='jboss-as-config-artifact' enforcedvalues='true' valuesUrl='http://localhost:8080/plugin/rundeck/options/artifact?project=dtolabs-toolchain-example5-jboss-as-config-rpm&amp;artifactRegex=.*\.rpm'>
+          <description>url of the selected jboss-as configuration artifact</description>
+        </option>
+        <option required='true' name='mysql-connector-java-artifact' enforcedvalues='true' valuesUrl='http://localhost:8080/plugin/rundeck/options/artifact?project=dtolabs-toolchain-example5-mysql-connector-java-rpm&amp;artifactRegex=.*\.rpm'>
+          <description>url of the selected mysql connector artifact</description>
+        </option>
+      </options>
+    </context>
+  </job>
+</joblist>
