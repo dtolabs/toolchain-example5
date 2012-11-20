@@ -107,6 +107,28 @@ Resolving deltas: 100% (22/22), done.
 Complete!
 </pre>
 
+* Deploy the toolchain build console:
+<pre>
+[chuck@mvn-sdp-0 toolchain-example5]$  rerun -M . toolchain-build-console: deploy
+Shutting down Jenkins                                      [  OK  ]
+Failed to set locale, defaulting to C
+Failed to set locale, defaulting to C
+Package rerun-rpm-1.0.0-25.noarch already installed and latest version
+Failed to set locale, defaulting to C
+Package rerun-apache-maven-1.0-8.noarch already installed and latest version
+Failed to set locale, defaulting to C
+Failed to set locale, defaulting to C
+Package rpm-build-4.8.0-27.el6.x86_64 already installed and latest version
+Failed to set locale, defaulting to C
+Package 1:java-1.6.0-openjdk-devel-1.6.0.0-1.50.1.11.5.el6_3.x86_64 already installed and latest version
+Failed to set locale, defaulting to C
+Package matching xmlstarlet-1.3.1-1.el6.x86_64 already installed. Checking for update.
+Starting Jenkins                                           [  OK  ]
+reloading http://localhost:8080
+Shutting down Jenkins                                      [  OK  ]
+Starting Jenkins                                           [  OK  ]
+</pre>
+
 
 Anthony Shortland
 anthony@dtosolutions.com
