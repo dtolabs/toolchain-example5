@@ -110,6 +110,7 @@ Complete!
 
 * Deploy the toolchain build console:
 <pre>
+[chuck@mvn-sdp-0]$  cd toolchain-example5
 [chuck@mvn-sdp-0 toolchain-example5]$  rerun -M . toolchain-build-console: deploy
 Shutting down Jenkins                                      [  OK  ]
 Failed to set locale, defaulting to C
