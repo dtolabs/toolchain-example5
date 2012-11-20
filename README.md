@@ -101,13 +101,11 @@ Resolving deltas: 100% (22/22), done.
 
 * Install Rerun and dependent modules:
 <pre>
-[anthony@centos63-toolchain-example5 ~]$ sudo yum -y install rerun
+[anthony@centos63-toolchain-example5 ~]$ sudo yum -y install rerun rerun-jenkins rerun-rundeck
 .
 .
 .
 Complete!
-
-[anthony@centos63-toolchain-example5 ~]$ sudo yum -y install rerun-jenkins rerun-rundeck
 </pre>
 
 * Deploy the toolchain build console:
