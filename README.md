@@ -86,7 +86,7 @@ Complete!
 git version 1.7.1
 </pre>
    * Clone the [Toolchain Example #5](https://github.com/dtolabs/toolchain-example5) repository:
-   ** NOTE:  for anonymous read-only access, use git url:  git://github.com/dtolabs/toolchain-example5.git
+   * NOTE:  for anonymous read-only access, use the [read-only url](git://github.com/dtolabs/toolchain-example5.git)
 <pre>
 [anthony@centos63-toolchain-example5 ~]$ mkdir src
 [anthony@centos63-toolchain-example5 ~]$ cd src
