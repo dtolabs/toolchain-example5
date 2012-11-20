@@ -2,10 +2,10 @@
 #
 #/ command: booking-application-server:deploy: "Deploy the Booking Application Server"
 #
-#/ usage: rerun booking-application-server:deploy [options]
+#/ usage: rerun booking-application-server:deploy  --jboss-as-package-file <http://localhost:8080/job/dtolabs-toolchain-example5-jboss-as-rpm/lastSuccessfulBuild/artifact/jboss-as-rpm/RPMS/noarch/jboss-as-7.1.1.Final-1.noarch.rpm>  --jboss-as-config-package-file <http://localhost:8080/job/dtolabs-toolchain-example5-jboss-as-config-rpm/lastSuccessfulBuild/artifact/jboss-as-config-rpm/RPMS/noarch/jboss-as-config-1.0-1.noarch.rpm>  --mysql-connector-package-file <http://mvn-sdp-0.local:8080/job/dtolabs-toolchain-example5-mysql-connector-java-rpm/lastSuccessfulBuild/artifact/mysql-connector-java-rpm/RPMS/noarch/mysql-connector-java-5.1.22-2.noarch.rpm>  --seam-booking-package-file <http://mvn-sdp-0.local:8080/job/dtolabs-seam-examples-master/ws/booking-rpm/target/rpm/seam-booking-rpm/RPMS/noarch/seam-booking-rpm-3.2.0-1.noarch.rpm> 
 #
 #/ rerun env variables: RERUN, RERUN_VERSION, RERUN_MODULES, RERUN_MODULE_DIR
-#/ option variables: 
+#/ option variables: JBOSS_AS_PACKAGE_FILE JBOSS_AS_CONFIG_PACKAGE_FILE MYSQL_CONNECTOR_PACKAGE_FILE SEAM_BOOKING_PACKAGE_FILE
 
 # Read module function library.
 . $RERUN_MODULE_DIR/lib/functions.sh || { 
@@ -32,8 +32,15 @@ set -o nounset -o pipefail
 # ------------------------------
 
 rerun booking-application-server: stop
-rerun booking-application-server: install
+
+rerun booking-application-server: install \
+      --jboss-as-package-file ${JBOSS_AS_PACKAGE_FILE} \
+      --jboss-as-config-package-file ${JBOSS_AS_CONFIG_PACKAGE_FILE} \
+      --mysql-connector-package-file ${MYSQL_CONNECTOR_PACKAGE_FILE} \
+      --seam-booking-package-file ${SEAM_BOOKING_PACKAGE_FILE}
+
 rerun booking-application-server: configure
+
 rerun booking-application-server: start
 
 exit $?

@@ -19,5 +19,16 @@
     <context>
       <project>dtolabs-toolchain-example5</project>
     </context>
+    <dispatch>
+      <threadcount>1</threadcount>
+      <keepgoing>false</keepgoing>
+      <excludePrecedence>true</excludePrecedence>
+      <rankOrder>ascending</rankOrder>
+    </dispatch>
+    <nodefilters>
+      <include>
+        <tags>toolchain-user</tags>
+      </include>
+    </nodefilters>
   </job>
 </joblist>

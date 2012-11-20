@@ -56,6 +56,7 @@ centos63-toolchain-example5
 * User requirements:
     * Non-root user account ...
     * ... with sudo access to run any command as root without a password (e.g. wheel group membership)
+    * ... sudo requiretty disabled to run any command without an interactive shell session (e.g. "Defaults requiretty" commented out)
 
 * Repositories:
    * Configure the [EPEL repository](http://dl.fedoraproject.org/pub/epel/6/x86_64/repoview/epel-release.html). e.g:
@@ -131,6 +132,15 @@ Shutting down Jenkins                                      [  OK  ]
 Starting Jenkins                                           [  OK  ]
 </pre>
 
+* Run the toolchain build console jobs
+<pre>
+[chuck@mvn-sdp-0 toolchain-example5]$ rerun jenkins: build-now --jobname dtolabs-toolchain-example5-master-mysql-connector-java-rpm
+[chuck@mvn-sdp-0 toolchain-example5]$ rerun jenkins: build-now --jobname dtolabs-toolchain-example5-master-jboss-as-rpm	
+[chuck@mvn-sdp-0 toolchain-example5]$ rerun jenkins: build-now --jobname dtolabs-toolchain-example5-master-jboss-as-config-rpm	
+[chuck@mvn-sdp-0 toolchain-example5]$ rerun jenkins: build-now --jobname dtolabs-toolchain-example5-master-booking-mysql-data-rpm	
+[chuck@mvn-sdp-0 toolchain-example5]$ rerun jenkins: build-now --jobname dtolabs-seam-examples-master	
+</pre>
+
 * Deploy the toolchain deploy console:
 <pre>
 [chuck@mvn-sdp-0 toolchain-example5]$ rerun -M . toolchain-deploy-console: deploy
@@ -152,10 +162,10 @@ Nothing to do
 Failed to set locale, defaulting to C
 Loaded plugins: fastestmirror, refresh-packagekit, security
 Loading mirror speeds from cached hostfile
- * base: mirror.sanctuaryhost.com
- * epel: linux.mirrors.es.net
- * extras: holmes.umflint.edu
- * updates: centos.mirror.sea.rackd.net
+ base: mirror.sanctuaryhost.com
+ epel: linux.mirrors.es.net
+ extras: holmes.umflint.edu
+ updates: centos.mirror.sea.rackd.net
 Setting up Install Process
 Package rundeck-1.4.4-1.3.noarch already installed and latest version
 Nothing to do
@@ -163,6 +173,7 @@ Starting rundeckd:                                         [  OK  ]
 nohup: redirecting stderr to stdout
 </pre>
 
-
-Anthony Shortland
-anthony@dtosolutions.com
+* Append Rundeck Public SSH Key to your own authorized_keys file
+<pre>
+[chuck@sdp-centos-63-64-1 ]$ sudo cat /var/lib/rundeck/.ssh/id_rsa.pub >> $HOME/.ssh/authorized_keys
+</pre>
