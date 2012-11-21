@@ -87,9 +87,25 @@ Complete!
 git version 1.7.1
 </pre>
 
+* Obtain latest version of the rerun-modules repo definition from [Rerun Modules Downloads](https://github.com/rerun-modules/rerun-modules/downloads), obtain the link and execute the following replacing example url shown inline:
+<pre>
+[chuck@sdp-centos-63-64-1 toolchain-example5]$  sudo rpm -Uvh https://github.com/downloads/rerun-modules/rerun-modules/rerun-modules-repo-1.0-21.noarch.rpm
+Retrieving https://github.com/downloads/rerun-modules/rerun-modules/rerun-modules-repo-1.0-21.noarch.rpm
+Preparing...                ########################################### [100%]
+   1:rerun-modules-repo     ########################################### [100%]
+</pre>
+
+* Obtain latest version of Rerun from [Rerun Downloads](https://github.com/rerun/rerun/downloads), obtain the link and execute the following replacing example url shown inline:
+<pre>
+[chuck@mvn-sdp-0 development]$ sudo rpm -Uvh https://github.com/downloads/rerun/rerun/rerun-1.0-109.noarch.rpm
+Retrieving https://github.com/downloads/rerun/rerun/rerun-1.0-109.noarch.rpm
+Preparing...                ########################################### [100%]
+   1:rerun                  ########################################### [100%]
+</pre>
+
 * Install MySQL, Rerun, and dependent Rerun modules
 <pre>
-[chuck@sdp-centos-63-64-1 toolchain-example5]$ sudo yum -y install rerun rerun-jenkins rerun-rundeck rpm-build mysql rerun-mysql rerun-jboss-as
+[chuck@sdp-centos-63-64-1 toolchain-example5]$ sudo yum -y install rerun-jenkins rerun-rundeck rpm-build mysql rerun-mysql rerun-jboss-as
 .
 .
 .
