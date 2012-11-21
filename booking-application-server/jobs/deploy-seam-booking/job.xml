@@ -4,13 +4,7 @@
     <loglevel>INFO</loglevel>
     <sequence keepgoing='false' strategy='node-first'>
       <command>
-        <jobref name='stop-jboss-as' group='jboss-as' />
-      </command>
-      <command>
         <exec>rerun booking-application-server:deploy --seam-booking-package-file ${option.seam-booking-artifact} --jboss-as-package-file ${option.jboss-as-artifact} --jboss-as-config-package-file ${option.jboss-as-config-artifact} --mysql-connector-java-package-file ${option.mysql-connector-java-artifact} </exec>
-      </command>
-      <command>
-        <jobref name='start-jboss-as' group='jboss-as' />
       </command>
     </sequence>
     <description>Deploy the seam booking application</description>
