@@ -52,6 +52,9 @@ rerun jboss-as-rpm:create-jobs
 rerun mysql-connector-java-rpm:create-jobs
 rerun seam-examples:create-jobs
 
+rerun booking-application-server:create-build-jobs
+rerun booking-database-server:create-build-jobs
+
 exit $?
 
 # Done

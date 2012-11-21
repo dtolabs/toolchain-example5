@@ -139,13 +139,6 @@ Receiving objects: 100% (90/90), 4.04 MiB | 1.48 MiB/s, done.
 Resolving deltas: 100% (22/22), done.
 </pre>
 
-* Build and Install the booking-application-server and booking-database-server rerun modules
-<pre>
-[anthony@centos63-toolchain-example5 ~]$  cd toolchain-example5
-[anthony@centos63-toolchain-example5 toolchain-example5]$ rerun  -M .  booking-application-server:install-module  --build true
-[anthony@centos63-toolchain-example5 toolchain-example5]$ rerun  -M .  booking-database-server:install-module  --build true
-</pre>
-
 * Deploy the toolchain build console:
 <pre>
 [chuck@mvn-sdp-0 toolchain-example5]$  rerun -M . toolchain-build-console: deploy
@@ -167,19 +160,6 @@ reloading http://localhost:8080
 Shutting down Jenkins                                      [  OK  ]
 Starting Jenkins                                           [  OK  ]
 </pre>
-
-* TODO: display an example of non-built console jobs  here
-
-* Run the toolchain build console jobs
-<pre>
-[chuck@mvn-sdp-0 toolchain-example5]$ rerun jenkins: build-now --jobname dtolabs-toolchain-example5-master-mysql-connector-java-rpm
-[chuck@mvn-sdp-0 toolchain-example5]$ rerun jenkins: build-now --jobname dtolabs-toolchain-example5-master-jboss-as-rpm	
-[chuck@mvn-sdp-0 toolchain-example5]$ rerun jenkins: build-now --jobname dtolabs-toolchain-example5-master-jboss-as-config-rpm	
-[chuck@mvn-sdp-0 toolchain-example5]$ rerun jenkins: build-now --jobname dtolabs-toolchain-example5-master-booking-mysql-data-rpm	
-[chuck@mvn-sdp-0 toolchain-example5]$ rerun jenkins: build-now --jobname dtolabs-seam-examples-master	
-</pre>
-
-* TODO: display an example of built console jobs here
 
 * Deploy the toolchain deploy console:
 <pre>
