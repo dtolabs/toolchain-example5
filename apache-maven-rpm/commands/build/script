@@ -31,6 +31,7 @@ set -o nounset -o pipefail
 # Your implementation goes here.
 # ------------------------------
 
+mkdir -p "${RERUN_MODULE_DIR}/SOURCES"
 curl -o "${RERUN_MODULE_DIR}/SOURCES/apache-maven-${VERSION}.zip" -f -L -sk "http://www.eng.lsu.edu/mirrors/apache/maven/maven-3/${VERSION}/binaries/apache-maven-${VERSION}-bin.zip"
 
 
