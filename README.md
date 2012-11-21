@@ -53,6 +53,14 @@ centos63-toolchain-example5
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 </pre>
 
+    * Disable SELinux and reboot:
+<pre>
+[chuck@localhost ~]$ sudo vi /etc/sysconfig/selinux 
+[chuck@localhost ~]$ grep ^SELINUX= /etc/sysconfig/selinux 
+SELINUX=disabled
+[chuck@localhost ~]$ sudo reboot
+</pre>
+
 * User requirements:
     * Non-root user account ...
     * ... with sudo access to run any command as root without a password (e.g. wheel group membership)
