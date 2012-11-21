@@ -112,11 +112,6 @@ Dependency Updated:
 Complete!
 </pre>
 
-* Build and Install the booking-application-server and booking-database-server rerun modules
-<pre>
-[anthony@centos63-toolchain-example5 ~]$ rerun  -M .  booking-application-server:install-module  --build true
-[anthony@centos63-toolchain-example5 ~]$ rerun  -M .  booking-database-server:install-module  --build true
-</pre>
 
    * Clone the [Toolchain Example #5](https://github.com/dtolabs/toolchain-example5) repository:
    * NOTE:  for anonymous read-only access, use the read-only url: [git://github.com/dtolabs/toolchain-example5.git](git://github.com/dtolabs/toolchain-example5.git)
@@ -132,6 +127,13 @@ Receiving objects: 100% (90/90), 4.04 MiB | 1.48 MiB/s, done.
 Resolving deltas: 100% (22/22), done.
 </pre>
 
+* Build and Install the booking-application-server and booking-database-server rerun modules
+<pre>
+[anthony@centos63-toolchain-example5 ~]$  cd toolchain-example5
+[anthony@centos63-toolchain-example5 toolchain-example5]$ rerun  -M .  booking-application-server:install-module  --build true
+[anthony@centos63-toolchain-example5 toolchain-example5]$ rerun  -M .  booking-database-server:install-module  --build true
+</pre>
+
 * Install Rerun and dependent modules:
 <pre>
 [anthony@centos63-toolchain-example5 ~]$ sudo yum -y install rerun rerun-jenkins rerun-rundeck
@@ -143,7 +145,6 @@ Complete!
 
 * Deploy the toolchain build console:
 <pre>
-[chuck@mvn-sdp-0]$  cd toolchain-example5
 [chuck@mvn-sdp-0 toolchain-example5]$  rerun -M . toolchain-build-console: deploy
 Shutting down Jenkins                                      [  OK  ]
 Failed to set locale, defaulting to C
