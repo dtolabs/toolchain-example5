@@ -41,10 +41,6 @@ sudo yum -q -y install rerun-rpm
 sudo yum -q -y install java-openjdk
 
 # Install the JBoss Application Server
-#"http://localhost:8080/job/dtolabs-toolchain-example5-jboss-as-rpm/lastSuccessfulBuild/artifact/jboss-as-rpm/RPMS/noarch/jboss-as-7.1.1.Final-1.noarch.rpm"
-#"http://localhost:8080/job/dtolabs-toolchain-example5-jboss-as-config-rpm/lastSuccessfulBuild/artifact/jboss-as-config-rpm/RPMS/noarch/jboss-as-config-1.0-1.noarch.rpm"
-#"http://mvn-sdp-0.local:8080/job/dtolabs-toolchain-example5-mysql-connector-java-rpm/lastSuccessfulBuild/artifact/mysql-connector-java-rpm/RPMS/noarch/mysql-connector-java-5.1.22-2.noarch.rpm"
-#"http://mvn-sdp-0.local:8080/job/dtolabs-seam-examples-master/ws/booking-rpm/target/rpm/seam-booking-rpm/RPMS/noarch/seam-booking-rpm-3.2.0-1.noarch.rpm"
 
 
 rerun rpm:upgrade --package-file "${JBOSS_AS_PACKAGE_FILE}"
