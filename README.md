@@ -161,6 +161,9 @@ Shutting down Jenkins                                      [  OK  ]
 Starting Jenkins                                           [  OK  ]
 </pre>
 
+![building-console-jobs](https://github.com/dtolabs/toolchain-example5/raw/master/doc/build-console-jobs.jpg)
+![building-console-jobs](https://github.com/dtolabs/toolchain-example5/raw/master/doc/build-console-jobs-built.jpg)
+
 * Deploy the toolchain deploy console:
 <pre>
 [chuck@mvn-sdp-0 toolchain-example5]$ rerun -M . toolchain-deploy-console: deploy
