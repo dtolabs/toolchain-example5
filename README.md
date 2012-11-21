@@ -87,9 +87,9 @@ Complete!
 git version 1.7.1
 </pre>
 
-* Install rpm-build, mysql, mysql module and jboss-as module
+* Install MySQL, Rerun, and dependent Rerun modules
 <pre>
-[anthony@centos63-toolchain-example5 ~]$ sudo yum -y install rpm-build mysql rerun-mysql rerun-jboss-as
+[chuck@sdp-centos-63-64-1 toolchain-example5]$ sudo yum -y install rerun rerun-jenkins rerun-rundeck rpm-build mysql rerun-mysql rerun-jboss-as
 .
 .
 .
@@ -113,8 +113,8 @@ Complete!
 </pre>
 
 
-   * Clone the [Toolchain Example #5](https://github.com/dtolabs/toolchain-example5) repository:
-   * NOTE:  for anonymous read-only access, use the read-only url: [git://github.com/dtolabs/toolchain-example5.git](git://github.com/dtolabs/toolchain-example5.git)
+* Clone the [Toolchain Example #5](https://github.com/dtolabs/toolchain-example5) repository:
+* NOTE:  for anonymous read-only access, use the read-only url: [git://github.com/dtolabs/toolchain-example5.git](git://github.com/dtolabs/toolchain-example5.git)
 <pre>
 [anthony@centos63-toolchain-example5 ~]$ mkdir src
 [anthony@centos63-toolchain-example5 ~]$ cd src
@@ -132,15 +132,6 @@ Resolving deltas: 100% (22/22), done.
 [anthony@centos63-toolchain-example5 ~]$  cd toolchain-example5
 [anthony@centos63-toolchain-example5 toolchain-example5]$ rerun  -M .  booking-application-server:install-module  --build true
 [anthony@centos63-toolchain-example5 toolchain-example5]$ rerun  -M .  booking-database-server:install-module  --build true
-</pre>
-
-* Install Rerun and dependent modules:
-<pre>
-[anthony@centos63-toolchain-example5 ~]$ sudo yum -y install rerun rerun-jenkins rerun-rundeck
-.
-.
-.
-Complete!
 </pre>
 
 * Deploy the toolchain build console:
@@ -165,6 +156,8 @@ Shutting down Jenkins                                      [  OK  ]
 Starting Jenkins                                           [  OK  ]
 </pre>
 
+* TODO: display an example of non-built console jobs  here
+
 * Run the toolchain build console jobs
 <pre>
 [chuck@mvn-sdp-0 toolchain-example5]$ rerun jenkins: build-now --jobname dtolabs-toolchain-example5-master-mysql-connector-java-rpm
@@ -173,6 +166,8 @@ Starting Jenkins                                           [  OK  ]
 [chuck@mvn-sdp-0 toolchain-example5]$ rerun jenkins: build-now --jobname dtolabs-toolchain-example5-master-booking-mysql-data-rpm	
 [chuck@mvn-sdp-0 toolchain-example5]$ rerun jenkins: build-now --jobname dtolabs-seam-examples-master	
 </pre>
+
+* TODO: display an example of built console jobs here
 
 * Deploy the toolchain deploy console:
 <pre>
@@ -206,7 +201,13 @@ Starting rundeckd:                                         [  OK  ]
 nohup: redirecting stderr to stdout
 </pre>
 
+* TODO: display deploy console here
+
 * Append Rundeck Public SSH Key to your own authorized_keys file
 <pre>
 [chuck@sdp-centos-63-64-1 ]$ sudo cat /var/lib/rundeck/.ssh/id_rsa.pub >> $HOME/.ssh/authorized_keys
 </pre>
+
+* Run the deploy-seam-booking deploy job... TODO: display dtolabs-toolchain-example5-deploy-seam-booking here
+
+

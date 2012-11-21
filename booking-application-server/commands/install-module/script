@@ -45,6 +45,8 @@ fi
 
 rerun rpm:upgrade --package-file "${RERUN_MODULES}/rerun-booking-application-server-${VERSION}-${RELEASE}.noarch.rpm"
 
+echo "installed rerun-booking-application-server-${VERSION}-${RELEASE}"
+
 exit $?
 
 # Done
