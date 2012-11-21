@@ -78,7 +78,7 @@ Preparing...                ########################################### [100%]
 * Git setup:
     * Install git:
 <pre>
-[anthony@centos63-toolchain-example5 ~]$ sudo yum -y install git
+[anthony@centos63-toolchain-example5 ~]$ sudo yum -y install git 
 .
 .
 .
@@ -87,9 +87,9 @@ Complete!
 git version 1.7.1
 </pre>
 
-* Install mysql, mysql module and jboss-as module
+* Install rpm-build, mysql, mysql module and jboss-as module
 <pre>
-[anthony@centos63-toolchain-example5 ~]$ sudo yum -y install mysql rerun-mysql rerun-jboss-as
+[anthony@centos63-toolchain-example5 ~]$ sudo yum -y install rpm-build mysql rerun-mysql rerun-jboss-as
 .
 .
 .
