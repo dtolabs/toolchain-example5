@@ -41,7 +41,8 @@ set -o nounset -o pipefail
 #rerun rundeck:restart
 
 # Create the Jenkins jobs:
-rerun booking-application-server:create-jobs
+rerun booking-application-server:create-deploy-jobs
+rerun booking-database-server:create-deploy-jobs
 
 
 exit $?
