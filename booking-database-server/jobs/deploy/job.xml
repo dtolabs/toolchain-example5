@@ -1,0 +1,35 @@
+<joblist>
+  <job>
+    <group>booking-database-server</group>
+    <id>dtolabs-toolchain-example5-booking-database-server-deploy-job</id>
+    <uuid>dtolabs-toolchain-example5-booking-database-server-deploy-job</uuid>
+    <name>deploy</name>
+    <description>Deploy the Booking database server</description>
+
+    <loglevel>INFO</loglevel>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <exec>booking-database-server:deploy --data-package-file ${option.data-package-artifact}</exec>
+      </command>
+    </sequence>
+    <context>
+      <project>dtolabs-toolchain-example5</project>
+      <options>
+        <option required='true' name='data-package-artifact' enforcedvalues='true' valuesUrl='http://localhost:8080/plugin/rundeck/options/artifact?project=dtolabs-toolchain-example5-master-booking-mysql-data-rpm&amp;artifactRegex=.*\.rpm'>
+          <description>url of the selected data artifact</description>
+        </option>
+      </options>
+    </context>
+    <dispatch>
+      <threadcount>1</threadcount>
+      <keepgoing>false</keepgoing>
+      <excludePrecedence>true</excludePrecedence>
+      <rankOrder>ascending</rankOrder>
+    </dispatch>
+    <nodefilters>
+      <include>
+        <tags>toolchain-user</tags>
+      </include>
+    </nodefilters>
+  </job>
+</joblist>
