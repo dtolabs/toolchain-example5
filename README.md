@@ -201,6 +201,12 @@ nohup: redirecting stderr to stdout
 * Append Rundeck Public SSH Key to your own authorized_keys file
 <pre>
 [chuck@sdp-centos-63-64-1 ]$ sudo cat /var/lib/rundeck/.ssh/id_rsa.pub >> $HOME/.ssh/authorized_keys
+[chuck@mvn-sdp-0 toolchain-example5]$ sudo su - rundeck
+[rundeck@mvn-sdp-0 ~]$ set -o vi
+[rundeck@mvn-sdp-0 ~]$ ssh chuck@localhost id
+uid=500(chuck) gid=500(chuck) groups=500(chuck),10(wheel),503(jboss-as)
+[rundeck@mvn-sdp-0 ~]$ exit
+[chuck@mvn-sdp-0 toolchain-example5]$ 
 </pre>
 
 * Run the deploy-seam-booking deploy job... TODO: display dtolabs-toolchain-example5-deploy-seam-booking here
