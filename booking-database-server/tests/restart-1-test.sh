@@ -1,9 +1,9 @@
 #!/usr/bin/env roundup
 #
-# This file contains the test plan for the build-now command.
+# This file contains the test plan for the restart command.
 # Execute the plan by invoking: 
 #    
-#     rerun stubbs:test -m booking-database-server -p build-now
+#     rerun stubbs:test -m booking-database-server -p restart
 #
 
 # Helpers
@@ -13,7 +13,7 @@
 # The Plan
 # --------
 
-describe "build-now"
+describe "restart"
 
 
 it_needs_a_real_test() {

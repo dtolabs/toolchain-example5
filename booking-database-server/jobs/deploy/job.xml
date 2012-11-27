@@ -9,7 +9,8 @@
     <loglevel>INFO</loglevel>
     <sequence keepgoing='false' strategy='node-first'>
       <command>
-        <exec>booking-database-server:deploy --data-package-file ${option.data-package-artifact}</exec>
+        <scripturl>http://localhost:8080/job/dtolabs-toolchain-example5-master-booking-database-server-module-bin/lastSuccessfulBuild/artifact/rerun-booking-database-server.bin</scripturl>
+        <scriptargs>booking-database-server:deploy --data-package-file ${option.data-package-artifact}</scriptargs>
       </command>
     </sequence>
     <context>

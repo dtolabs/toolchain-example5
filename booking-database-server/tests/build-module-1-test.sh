@@ -12,7 +12,7 @@
 describe "build-module"
 
 
-it_runs_without_a_real_test() {
-    echo "NOTE: this test sucks because we are limited to where we can write this module" 1>&2
+
+it_needs_a_real_test() {
     exit 0
-}
+} 

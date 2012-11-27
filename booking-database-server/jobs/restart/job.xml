@@ -14,7 +14,8 @@
     <loglevel>INFO</loglevel>
     <sequence keepgoing='false' strategy='node-first'>
       <command>
-        <exec>booking-database-server:restart</exec>
+        <scripturl>http://localhost:8080/job/dtolabs-toolchain-example5-master-booking-database-server-module-bin/lastSuccessfulBuild/artifact/rerun-booking-database-server.bin</scripturl>
+        <scriptargs>booking-database-server:restart</scriptargs>
       </command>
     </sequence>
     <context>
