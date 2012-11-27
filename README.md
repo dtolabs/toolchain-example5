@@ -204,23 +204,87 @@ nohup: redirecting stderr to stdout
 
 Using the Example
 -----
+* Run any command as the toolchain user by filtering by the "toolchain-user" tag and entering a command in the command field:
+![rundeck-tc-user](https://github.com/dtolabs/toolchain-example5/raw/master/doc/rundeck-tc-user.jpg)
 
-* Review the builds
-During the the build console deploy, all jobs will be triggered automatically.  Review all jobs to ensure they are complete.
-
-Navigate to the build console (Jenkins) at [http://<i>localhost</i>:8080/](http://localhost:8080/) (replace localhost for your hostname)
+* Ensure the builds started by the build console deploy are complete.
 ![building-console-jobs](https://github.com/dtolabs/toolchain-example5/raw/master/doc/build-console-jobs.jpg)
 ![building-console-jobs](https://github.com/dtolabs/toolchain-example5/raw/master/doc/build-console-jobs-built.jpg)
 
-* Use the Rundeck Run tab
+* Run the Booking database server deploy job
+![building-console-jobs](https://github.com/dtolabs/toolchain-example5/raw/master/doc/deploy-console-database-server-deploy.jpg)
 
-* Use the application and database server deployment jobs.
+* Check that the Booking database exists
+<pre>
+[chuck@localhost toolchain-example5]$ mysql -u root
+.
+.
+.
+mysql&gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| booking            |
+| mysql              |
+| scripts            |
+| test               |
++--------------------+
+5 rows in set (0.00 sec)
+</pre>
+
+* Run the Booking application server deploy job
+![building-console-jobs](https://github.com/dtolabs/toolchain-example5/raw/master/doc/deploy-console-application-server-deploy.jpg)
+
+* Navigate to the sample Booking application and make a booking at [http://<i>localhost</i>:8180/seam-booking](http://localhost:8180/seam-booking) (replace localhost for your hostname)
+![seam-booking-login](https://github.com/dtolabs/toolchain-example5/raw/master/doc/seam-booking-login.jpg)
+
+
 
 Removing the example from the system
 -----------------------------------
+* Completely remove the Booking application server (JBoss) from the system
+<pre>
+[chuck@localhost toolchain-example5]$ rerun -M . booking-application-server:remove
+.
+.
+.
+Stopping jboss-as:                                         [  OK  ]
+  jboss-as.noarch 0:7.1.1.Final-1                                                                 seam-booking-rpm.noarch 0:3.2.0-1                                                                
 
-1159  rerun booking-application-server:remove
- 1160  rerun booking-database-server:remove
- 1161  ls
- 1162  rerun toolchain-build-console:remove
- 1163  rerun toolchain-deploy-console:remove
+Dependency Removed:
+  jboss-as-config.noarch 0:1.0-1                                                               mysql-connector-java.noarch 0:5.1.22-1                                                              
+
+Complete!
+</pre>
+
+* Completely remove the Booking database server (MySQL) from the system
+<pre>
+[chuck@localhost toolchain-example5]$ rerun -M . booking-database-server:remove
+mysqld (pid  6654) is running...
+Stopping mysqld:                                           [  OK  ]
+mysqld is stopped
+Failed to set locale, defaulting to C
+Warning: RPMDB altered outside of yum.
+warning: /var/log/mysqld.log saved as /var/log/mysqld.log.rpmsave
+</pre>
+
+* Completely remove the deploy console (Rundeck) from the system
+<pre>
+[chuck@localhost toolchain-example5]$ rerun -M . toolchain-deploy-console:remove
+Stopping rundeckd:                                         [  OK  ]
+.
+.
+.
+</pre>
+
+* Completely remove the build console (Jenkins) from the system
+<pre>
+[chuck@localhost toolchain-example5]$ rerun -M . toolchain-build-console:remove
+Shutting down Jenkins                                      [  OK  ]
+Failed to set locale, defaulting to C
+warning: /etc/yum.repos.d/jenkins.repo saved as /etc/yum.repos.d/jenkins.repo.rpmsave
+</pre>
+
+Chuck Scott (chuck@dtosolutions.com)
+Anthony Shortland (anthony@dtosolutions.com)
