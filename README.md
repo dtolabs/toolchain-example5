@@ -113,7 +113,6 @@ Preparing...                ########################################### [100%]
 Installed:
   rerun-apache-maven.noarch 0:1.0-10  rerun-github.noarch 0:1.0.0-26  rerun-jboss-as.noarch 0:1.0-20  rerun-jenkins.noarch 0:1.0.0-28  rerun-mysql.noarch 0:1.0.0-13  rerun-rpm.noarch 0:1.0.0-26 
   rerun-rundeck.noarch 0:1.0-18       rerun-ssh.noarch 0:1.0.0-7     
-
 Complete!
 </pre>
 
