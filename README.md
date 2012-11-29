@@ -63,7 +63,14 @@ centos63-toolchain-example5
     * Non-root user account ...
     * ... with sudo access to run any command as root without a password (e.g. wheel group membership)
     * ... sudo requiretty disabled to run any command without an interactive shell session (e.g. "Defaults requiretty" commented out)
-
+<pre>
+[chuck@sdp-centos-63-64-1 toolchain-example5]$ sudo grep '%wheel.*NOPASSWD' /etc/sudoers
+%wheel  ALL=(ALL)       NOPASSWD: ALL
+[chuck@sdp-centos-63-64-1 toolchain-example5]$ sudo grep 'Defaults.*requiretty' /etc/sudoers
+Defaults    !requiretty
+[chuck@sdp-centos-63-64-1 toolchain-example5]$ groups
+chuck wheel
+</pre>
 * Git setup:
     * Install git:
 <pre>
