@@ -62,7 +62,7 @@ centos63-toolchain-example5
 * User requirements:
     * Non-root user account ...
     * ... with sudo access to run any command as root without a password (e.g. wheel group membership)
-    * ... sudo requiretty disabled to run any command without an interactive shell session (e.g. "Defaults requiretty" commented out)
+    * ... sudo requiretty disabled to run any command without an interactive shell session (e.g. "Defaults !requiretty")
 <pre>
 [chuck@sdp-centos-63-64-1 toolchain-example5]$ sudo grep '%wheel.*NOPASSWD' /etc/sudoers
 %wheel  ALL=(ALL)       NOPASSWD: ALL
