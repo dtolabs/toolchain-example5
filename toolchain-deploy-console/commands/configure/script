@@ -44,7 +44,7 @@ rerun ssh:add-authorized-key --public-key "${PUBLIC_KEY}" --type ${TYPE} --comme
 
 # Setup localhost as a known host of the Rundeck user
 HOST_PUBLIC_KEY=$(cat /etc/ssh/ssh_host_${TYPE}_key.pub | cut -d' ' -f2)
-sudo -u rundeck rerun ssh:add-host-key --public-key "${HOST_PUBLIC_KEY}" --type ${TYPE} --hostname localhost
+sudo -u rundeck rerun ssh:add-host-key --host-key "${HOST_PUBLIC_KEY}" --type ${TYPE} --hostname localhost
 
 exit $?
 
