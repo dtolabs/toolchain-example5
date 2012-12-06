@@ -103,7 +103,7 @@ Preparing...                ########################################### [100%]
    1:rerun                  ########################################### [100%]
 </pre>
 
-   * Obtain latest version of the rerun-modules repo definition from [Rerun Modules Downloads](https://github.com/rerun-modules/rerun-modules/downloads), obtain the link and execute the following replacing example url shown inline:
+* Obtain latest version of the rerun-modules repo definition from [Rerun Modules Downloads](https://github.com/rerun-modules/rerun-modules/downloads), obtain the link and execute the following replacing example url shown inline:
 <pre>
 [chuck@sdp-centos-63-64-1 toolchain-example5]$  sudo rpm -Uvh https://github.com/downloads/rerun-modules/rerun-modules/rerun-modules-repo-1.0-21.noarch.rpm
 Retrieving https://github.com/downloads/rerun-modules/rerun-modules/rerun-modules-repo-1.0-21.noarch.rpm
@@ -113,12 +113,12 @@ Preparing...                ########################################### [100%]
 
 * Install all available Rerun modules
 <pre>
-[chuck@localhost ~]$ sudo yum -y --disablerepo=\* --enablerepo=rerun-modules install '*'
+[chuck@localhost ~]$ sudo yum -y --disablerepo=\* --enablerepo=rerun-modules install rerun-apache-maven rerun-boss-as rerun-jenkins rerun-mysql rerun-rpm rerun-rundeck rerun-ssh
 .
 .
 .
 Installed:
-  rerun-apache-maven.noarch 0:1.0-10  rerun-github.noarch 0:1.0.0-26  rerun-jboss-as.noarch 0:1.0-20  rerun-jenkins.noarch 0:1.0.0-28  rerun-mysql.noarch 0:1.0.0-13  rerun-rpm.noarch 0:1.0.0-26 
+  rerun-apache-maven.noarch 0:1.0-10  rerun-jboss-as.noarch 0:1.0-20  rerun-jenkins.noarch 0:1.0.0-28  rerun-mysql.noarch 0:1.0.0-13  rerun-rpm.noarch 0:1.0.0-26 
   rerun-rundeck.noarch 0:1.0-18       rerun-ssh.noarch 0:1.0.0-7     
 Complete!
 </pre>
